@@ -68,7 +68,7 @@ jobs:
         run: poetry build
 
       - name: Upload dist
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.repository.name }}-${{ runner.os }}-${{ matrix.python-version }}-${{ github.sha }}
           path: dist/
