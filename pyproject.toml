@@ -30,7 +30,7 @@ pyright = "^1.1.392"
 ipykernel = "^6.29.5"
 ipywidgets = "^8.1.5"
 ipython = "^8.32.0"
-jupytext = " ^1.16.4"
+jupytext = "^1.16.7"
 nbconvert = "^7.16.6"
 
 [tool.poetry.group.test.dependencies]
