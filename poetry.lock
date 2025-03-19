@@ -15,14 +15,14 @@ files = [
 
 [[package]]
 name = "astdoc"
-version = "1.1.1"
+version = "1.1.5"
 description = "A library for parsing AST and extracting docstring information in Python."
 optional = false
 python-versions = ">=3.10"
 groups = ["docs"]
 files = [
-    {file = "astdoc-1.1.1-py3-none-any.whl", hash = "sha256:60e6afba7529d812fb7589a47314ce2f7fef66b93797c02b61a0aed2e2303ed9"},
-    {file = "astdoc-1.1.1.tar.gz", hash = "sha256:971997ee09f4a486e1ffe6f9b70365e884798e1ad752e9278a1a9d94dd400088"},
+    {file = "astdoc-1.1.5-py3-none-any.whl", hash = "sha256:0223fca92429a572f898898ed25c7877d3edede08d2b0f5f25768e549a1c74b7"},
+    {file = "astdoc-1.1.5.tar.gz", hash = "sha256:a58b0a1caf0a285e4f5a303bd49f828dad15d03471d25a155356ce74b5a33699"},
 ]
 
 [package.dependencies]
@@ -1317,18 +1317,18 @@ files = [
 
 [[package]]
 name = "mkapi"
-version = "4.1.0"
+version = "4.1.3"
 description = "A plugin for MkDocs to generate API documentation"
 optional = false
 python-versions = ">=3.10"
 groups = ["docs"]
 files = [
-    {file = "mkapi-4.1.0-py3-none-any.whl", hash = "sha256:89a50e2d1de5133a3e5445f01bf3511e3f3f14a7651e4a3b138ea3c308287d2a"},
-    {file = "mkapi-4.1.0.tar.gz", hash = "sha256:c3972add7447abd60cef4d5fecf49e7621cfda35783f1bd92ab40a328ca36834"},
+    {file = "mkapi-4.1.3-py3-none-any.whl", hash = "sha256:c59226a796982a69cbbdc8ddc6f8c43c84bbc7fcad98d72e02faab0065105f97"},
+    {file = "mkapi-4.1.3.tar.gz", hash = "sha256:76bf1113d4fd636e77952c6c3a333e084ee88533888784b450da0e788935a2dd"},
 ]
 
 [package.dependencies]
-astdoc = ">=1.1.1"
+astdoc = ">=1.1.5"
 jinja2 = "*"
 mkdocs = ">=1.6.0"
 mkdocs-material = "*"
@@ -2744,4 +2744,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "47c056dbb7d4d949a19866aae391736a7cab67a2ca603fb04a54f0d25ddabc29"
+content-hash = "47d26ccd8359b3b71c868a2c20f128a8745f9ea804af12f13613f2dfccae5e55"
