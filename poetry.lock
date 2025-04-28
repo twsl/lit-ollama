@@ -15,18 +15,15 @@ files = [
 
 [[package]]
 name = "astdoc"
-version = "1.1.5"
-description = "A library for parsing AST and extracting docstring information in Python."
+version = "1.2.1"
+description = "A lightweight Python library for parsing AST and extracting docstring information. Automatically generate documentation from Python source code by analyzing abstract syntax trees and docstrings."
 optional = false
 python-versions = ">=3.10"
 groups = ["docs"]
 files = [
-    {file = "astdoc-1.1.5-py3-none-any.whl", hash = "sha256:0223fca92429a572f898898ed25c7877d3edede08d2b0f5f25768e549a1c74b7"},
-    {file = "astdoc-1.1.5.tar.gz", hash = "sha256:a58b0a1caf0a285e4f5a303bd49f828dad15d03471d25a155356ce74b5a33699"},
+    {file = "astdoc-1.2.1-py3-none-any.whl", hash = "sha256:37de6b2cc0974e0746bf04734a81ea6b10469a5f41f4d39cbc7b12a9ced8e545"},
+    {file = "astdoc-1.2.1.tar.gz", hash = "sha256:6b35d867b1dd3b5e464d9adf810814241f2d9884d023c7b2f3a9a4116c5d6a10"},
 ]
-
-[package.dependencies]
-markdown = ">=3"
 
 [[package]]
 name = "asttokens"
@@ -1317,22 +1314,21 @@ files = [
 
 [[package]]
 name = "mkapi"
-version = "4.1.5"
-description = "A powerful MkDocs plugin for automatic API documentation generation from Python docstrings"
+version = "4.3.2"
+description = "MkDocs plugin for automatic API documentation generation from Python docstrings"
 optional = false
 python-versions = ">=3.10"
 groups = ["docs"]
 files = [
-    {file = "mkapi-4.1.5-py3-none-any.whl", hash = "sha256:2d3aef7fc3d6a301f1403900c951bf50a52233d3c608c589f0b768e59533b44d"},
-    {file = "mkapi-4.1.5.tar.gz", hash = "sha256:3cafac980e7761f22be42aa802a08aa67eed1c7567a4bc50b5619b1c405a39a4"},
+    {file = "mkapi-4.3.2-py3-none-any.whl", hash = "sha256:6305a236a582c22164319f6eda833a2e1b7359a0a9b53f1de9d8f72c11b6cd47"},
+    {file = "mkapi-4.3.2.tar.gz", hash = "sha256:af83775a410b66652f376775209b078d04d9e7fcb788b8ddca9e3eeaea1bfc73"},
 ]
 
 [package.dependencies]
-astdoc = ">=1.1.5"
+astdoc = ">=1.2.0"
 jinja2 = "*"
 mkdocs = ">=1.6.0"
 mkdocs-material = "*"
-rich = "*"
 
 [[package]]
 name = "mkdocs"
@@ -2314,7 +2310,7 @@ version = "13.9.4"
 description = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
 optional = false
 python-versions = ">=3.8.0"
-groups = ["dev", "docs"]
+groups = ["dev"]
 files = [
     {file = "rich-13.9.4-py3-none-any.whl", hash = "sha256:6049d5e6ec054bf2779ab3358186963bac2ea89175919d699e378b99738c2a90"},
     {file = "rich-13.9.4.tar.gz", hash = "sha256:439594978a49a09530cff7ebc4b5c7103ef57baf48d5ea3184f21d9a2befa098"},
@@ -2744,4 +2740,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "597aed80be4d6a73c75b70ce1e929882aab489f72d90a5789c499d9fba6348ed"
+content-hash = "edd788eedd4e1bf1cd09bf64f95a1781d62d80bc259f74d949e3bfc2d23b87f9"
