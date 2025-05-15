@@ -13,8 +13,8 @@
     // Features to add to the dev container. More info: https://containers.dev/features.
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
-        "ghcr.io/devcontainers-contrib/features/actionlint:1": {},
-        "ghcr.io/devcontainers-contrib/features/pre-commit:2": {},
+        "ghcr.io/devcontainers-extra/features/actionlint:1": {},
+        "ghcr.io/devcontainers-extra/features/pre-commit:2": {},
         "ghcr.io/dhoeric/features/act:1": {},
         "ghcr.io/devcontainers/features/docker-in-docker:2": {
             "version": "latest",
@@ -98,7 +98,6 @@
                 "charliermarsh.ruff",
                 "esbenp.prettier-vscode",
                 "ms-vscode.test-adapter-converter",
-                "littlefoxteam.vscode-python-test-adapter",
                 "njqdev.vscode-python-typehint",
                 "KevinRose.vsc-python-indent",
                 "medo64.render-crlf",
@@ -115,7 +114,6 @@
                 "ms-vscode-remote.vscode-remote-extensionpack",
                 "ms-azuretools.vscode-docker",
                 "uctakeoff.vscode-counter",
-                "ExecutableBookProject.myst-highlight",
                 "redhat.vscode-yaml"
             ]
         }

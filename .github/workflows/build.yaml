@@ -10,7 +10,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-
 jobs:
   build-and-test:
     name: Build and Test
@@ -45,6 +44,7 @@ jobs:
         with:
           virtualenvs-create: true
           virtualenvs-in-project: true
+          virtualenvs-path: .venv
 
       - name: Add poetry to path
         run: echo "$(poetry env info --path)/bin" >> $GITHUB_PATH
@@ -58,11 +58,14 @@ jobs:
           restore-keys: venv-${{ runner.os }}-${{ matrix.python-version }}-
 
       - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction
+        # if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --all-extras
 
-      - name: Install plugin
-        run: poetry add --group test pytest-github-actions-annotate-failures
+      - name: Run pre-commit
+        uses: pre-commit/action@v3.0.1
+        continue-on-error: true
+        env:
+          SKIP: poetry-lock
 
       - name: Build dependencies
         run: poetry build
@@ -76,7 +79,9 @@ jobs:
 
       - name: Run tests
         run: |
-          poetry run pytest -c pyproject.toml --cov=${{ github.event.repository.name }} --cov-report=html \
+          poetry run pytest -c pyproject.toml \
+          --cov-config=pyproject.toml \
+          --cov-report=html \
           --cov-report=xml:coverage-${{ runner.os }}-${{ matrix.python-version }}.xml \
           --junitxml=junit/test-results-${{ runner.os }}-${{ matrix.python-version }}.xml \
           --benchmark-disable

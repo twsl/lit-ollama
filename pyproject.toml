@@ -4,51 +4,67 @@ build-backend = "poetry_dynamic_versioning.backend"
 
 [project]
 name = "lit-ollama"
-requires-python = ">=3.11"
-
-# TODO: https://github.com/python-poetry/poetry/issues/3332
-[tool.poetry]
-name = "lit-ollama"
 version = "0.0.0"
+requires-python = ">=3.11"
 description = "Replace ollama with LitServe"
-authors = ["twsl <45483159+twsl@users.noreply.github.com>"]
-license = "MIT"
 readme = "README.md"
-repository = "https://github.com/twsl/lit-ollama"
+license = { text = "MIT" }
+authors = [
+    { name = "twsl", email = "45483159+twsl@users.noreply.github.com" }
+]
+keywords = [
+    "lit-ollama"
+]
+dynamic = [
+    "classifiers",
+    "dependencies"
+]
+
+[project.urls]
 homepage = "https://twsl.github.io/lit-ollama/"
-packages = [ { include = "lit_ollama", from = "src" } ]
-keywords = []
+repository = "https://github.com/twsl/lit-ollama"
+documentation = "https://twsl.github.io/lit-ollama/"
+
+[tool.poetry]
+packages = [
+    { include = "lit_ollama", from = "src" }
+]
+classifiers = [
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.11.6"
+ruff = "^0.11.9"
 bandit = "^1.8.3"
 pre-commit = "^4.2.0"
-pyright = "^1.1.398"
+pyright = "^1.1.400"
+vulture = "^2.14"
+copier = "^9.7.1"
 ipykernel = "^6.29.5"
-ipywidgets = "^8.1.5"
-ipython = "^9.0.2"
-jupytext = "^1.16.7"
+ipywidgets = "^8.1.7"
+ipython = "^9.1.0"
+jupytext = " ^1.16.6"
 nbconvert = "^7.16.6"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.3.5"
-pytest-cov = "^6.0.0"
-pytest-mock = "^3.12.0"
+pytest-cov = "^6.1.1"
+pytest-mock = "^3.14.0"
 pytest-cases = "^3.8.6"
 pytest-benchmark = "^5.1.0"
+pytest-github-actions-annotate-failures = "^0.3.0"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.6.1"
-mkdocs-material = "^9.6.10"
-mkdocs-git-revision-date-localized-plugin = "^1.4.4"
-mkdocs-awesome-pages-plugin = "^2.9.3"
-mkdocs-git-authors-plugin = "^0.9.4"
-mkapi = "^4.1.5"
+mkdocs-material = "^9.6.14"
+mkdocs-git-revision-date-localized-plugin = "^1.4.5"
+mkdocs-awesome-pages-plugin = "^2.10.1"
+mkdocs-git-authors-plugin = "^0.9.5"
+mkapi = "^4.4.0"
 markdown-callouts = "^0.4.0"
-pygments = "^2.19.1"
+pygments = "^2.19.0"
 mkdocs-jupyter = "^0.25.1"
 
 [tool.poetry.group.debug]
@@ -58,7 +74,7 @@ optional = true
 ipdb = "^0.13.9"
 line_profiler = "^4.2.0"
 
-[tool.poetry.scripts]
+[project.scripts]
 lit-ollama = "lit_ollama.cli:main"
 
 [tool.poetry-dynamic-versioning]
@@ -84,7 +100,7 @@ __version_tuple__ = (0, 0, 0)
 [tool.pytest.ini_options]
 minversion = "8.0"
 # https://code.visualstudio.com/docs/python/testing#_pytest-configuration-settings
-addopts = "--doctest-glob='test_*.md' --cov=src/lit_ollama --cov-report xml"
+addopts = "--doctest-glob='test_*.md' --cov=src/lit_ollama --cov-config=pyproject.toml"
 testpaths = [
     "tests",
 ]
@@ -94,6 +110,7 @@ branch = true
 omit = [
     "tests/*",
 ]
+source_pkgs = ["lit_ollama"]
 
 [tool.coverage.report]
 exclude_lines = [
@@ -221,3 +238,9 @@ pythonPlatform = "Linux"
 include = ["src"]
 reportMissingImports = true
 reportMissingTypeStubs = false
+
+[tool.vulture]
+sort_by_size = true
+verbose = false
+min_confidence = 100
+paths = ["src"]
