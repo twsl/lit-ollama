@@ -25,15 +25,17 @@ class LitLLMAPI(ls.LitAPI):
         self.distribute = distribute
         self.precision = precision
         self.max_new_tokens = max_new_tokens
-        self.checkpoint_dir = auto_download_checkpoint(model_name=model_name)
 
     def setup(self, device: str) -> None:
         self.initialize_model(device)
 
     def initialize_model(self, device: str) -> None:
         print("Initializing model...")
-        # self.llm = LLM.load(model=self.checkpoint_dir.as_posix(), distribute=None if self.distribute else "auto")
-        self.llm = MockLLM()
+        if self.model_name != "mock":
+            self.checkpoint_dir = auto_download_checkpoint(model_name=self.model_name)
+            self.llm = LLM.load(model=self.checkpoint_dir.as_posix(), distribute=None if self.distribute else "auto")
+        else:
+            self.llm = MockLLM()
 
         if self.distribute:
             pass
