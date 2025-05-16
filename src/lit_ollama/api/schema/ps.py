@@ -1,6 +1,3 @@
-from enum import Enum
-from pathlib import Path
-
 from pydantic.dataclasses import dataclass
 
 from lit_ollama.api.schema.base import RunningModel

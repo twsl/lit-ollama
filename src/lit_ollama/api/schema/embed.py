@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from pydantic.dataclasses import dataclass
 
 # https://github.com/ollama/ollama/blob/main/docs/api.md#generate-embeddings

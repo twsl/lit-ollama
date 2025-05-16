@@ -1,10 +1,6 @@
 from datetime import datetime
-from tkinter import N
 from typing import Literal
-from uuid import uuid4
 
-from fastapi import FastAPI, HTTPException
-from pydantic import ConfigDict
 from pydantic.dataclasses import dataclass
 
 from lit_ollama.api.schema.base import GenerateOptions, StructuredOutputFormat
