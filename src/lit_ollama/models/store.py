@@ -11,7 +11,7 @@ from lit_ollama.api.schema.base import ModelDetails, TagModel
 
 class ModelStore:
     def __init__(self) -> None:
-        self.models = {}
+        self.models: dict[str, TagModel] = {}
 
         self.load_models()
 
