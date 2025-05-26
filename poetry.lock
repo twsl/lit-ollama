@@ -2013,14 +2013,14 @@ files = [
 
 [[package]]
 name = "mkapi"
-version = "4.4.0"
+version = "4.4.1"
 description = "MkDocs plugin for automatic API documentation generation from Python docstrings"
 optional = false
 python-versions = ">=3.10"
 groups = ["docs"]
 files = [
-    {file = "mkapi-4.4.0-py3-none-any.whl", hash = "sha256:dc92c4399951b2699d0c7f8b3ce9f12e7effbf4f7df428d03b95ec1ec1658137"},
-    {file = "mkapi-4.4.0.tar.gz", hash = "sha256:5476f2e88af230ec62d394d4b8e1e1be526e376a407b3763d544b5d436536916"},
+    {file = "mkapi-4.4.1-py3-none-any.whl", hash = "sha256:4ca4215273b9f374df691e6a46344a8f4cdf3ef405ef7c9ff063ff4e5903893f"},
+    {file = "mkapi-4.4.1.tar.gz", hash = "sha256:74415292b50065efafe118323ce8285d82ae6a91528296b6f62f44cd8a07c70b"},
 ]
 
 [package.dependencies]
@@ -4874,4 +4874,4 @@ propcache = ">=0.2.1"
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "fb62eee301f0e623670e058ae65d85ae2173641977943f8e8b4dce1b0a1f1628"
+content-hash = "2fb0e8188404cfbd9fae90c01bc018f7e0097076aab2baaf1f8a9d13e1f92ebb"
