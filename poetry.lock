@@ -3333,20 +3333,21 @@ histogram = ["pygal", "pygaljs", "setuptools"]
 
 [[package]]
 name = "pytest-cases"
-version = "3.8.6"
+version = "3.9.1"
 description = "Separate test code from test cases in pytest."
 optional = false
 python-versions = "*"
 groups = ["test"]
 files = [
-    {file = "pytest_cases-3.8.6-py2.py3-none-any.whl", hash = "sha256:564c722492ea7e7ec3ac433fd14070180e65866f49fa35bfe938c0d5d9afba67"},
-    {file = "pytest_cases-3.8.6.tar.gz", hash = "sha256:5c24e0ab0cb6f8e802a469b7965906a333d3babb874586ebc56f7e2cbe1a7c44"},
+    {file = "pytest_cases-3.9.1-py2.py3-none-any.whl", hash = "sha256:60507716650c5ed1ce4a36a3c137f1c3ec58f4fef1ee8678404be074612fcd21"},
+    {file = "pytest_cases-3.9.1.tar.gz", hash = "sha256:c4e181f1b525c931a318d4812fa8de656c2c8fb77fccf1571ecf0cc5fe8e7f8f"},
 ]
 
 [package.dependencies]
 decopatch = "*"
 makefun = ">=1.15.1"
 packaging = "*"
+pytest = "*"
 
 [[package]]
 name = "pytest-cov"
@@ -4874,4 +4875,4 @@ propcache = ">=0.2.1"
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "fb62eee301f0e623670e058ae65d85ae2173641977943f8e8b4dce1b0a1f1628"
+content-hash = "333ad61be57f501c016185e7cbad041da0bd9a6c7dc2c31fb6cc79fb4693a979"
