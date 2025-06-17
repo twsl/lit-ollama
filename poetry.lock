@@ -178,6 +178,21 @@ files = [
 ]
 
 [[package]]
+name = "aspectlib"
+version = "2.0.0"
+description = "``aspectlib`` is an aspect-oriented programming, monkey-patch and decorators library. It is useful when changing"
+optional = false
+python-versions = ">=3.7"
+groups = ["test"]
+files = [
+    {file = "aspectlib-2.0.0-py3-none-any.whl", hash = "sha256:d549c64e9b0791449d2bafeb1aaf9db090af414b0a38967d313b77d2bf266628"},
+    {file = "aspectlib-2.0.0.tar.gz", hash = "sha256:a4b461b9da0b531aebcb93efcde3de808a72c60226dd8d902c467d13faf7ce92"},
+]
+
+[package.dependencies]
+fields = "*"
+
+[[package]]
 name = "astdoc"
 version = "1.2.1"
 description = "A lightweight Python library for parsing AST and extracting docstring information. Automatically generate documentation from Python source code by analyzing abstract syntax trees and docstrings."
@@ -261,14 +276,14 @@ extras = ["regex"]
 
 [[package]]
 name = "bandit"
-version = "1.8.3"
+version = "1.8.5"
 description = "Security oriented static analyser for python code."
 optional = false
 python-versions = ">=3.9"
 groups = ["dev"]
 files = [
-    {file = "bandit-1.8.3-py3-none-any.whl", hash = "sha256:28f04dc0d258e1dd0f99dee8eefa13d1cb5e3fde1a5ab0c523971f97b289bcd8"},
-    {file = "bandit-1.8.3.tar.gz", hash = "sha256:f5847beb654d309422985c36644649924e0ea4425c76dec2e89110b87506193a"},
+    {file = "bandit-1.8.5-py3-none-any.whl", hash = "sha256:cb2e57524e99e33ced48833c6cc9c12ac78ae970bb6a450a83c4b506ecc1e2f9"},
+    {file = "bandit-1.8.5.tar.gz", hash = "sha256:db812e9c39b8868c0fed5278b77fffbbaba828b4891bc80e34b9c50373201cfd"},
 ]
 
 [package.dependencies]
@@ -871,6 +886,18 @@ files = [
 devel = ["colorama", "json-spec", "jsonschema", "pylint", "pytest", "pytest-benchmark", "pytest-cache", "validictory"]
 
 [[package]]
+name = "fields"
+version = "5.0.0"
+description = "Container class boilerplate killer."
+optional = false
+python-versions = "*"
+groups = ["test"]
+files = [
+    {file = "fields-5.0.0-py2.py3-none-any.whl", hash = "sha256:67bf7da6b848fc47bc41061bf3f847c5e040333a9d532f7c89cb4e9b5b2acab0"},
+    {file = "fields-5.0.0.tar.gz", hash = "sha256:31d4aa03d8d44e35df13c431de35136997f047a924a597d84f7bc209e1be5727"},
+]
+
+[[package]]
 name = "filelock"
 version = "3.16.1"
 description = "A platform independent file lock."
@@ -1243,6 +1270,30 @@ files = [
 all = ["flake8 (>=7.1.1)", "mypy (>=1.11.2)", "pytest (>=8.3.2)", "ruff (>=0.6.2)"]
 
 [[package]]
+name = "importlib-metadata"
+version = "8.7.0"
+description = "Read metadata from Python packages"
+optional = false
+python-versions = ">=3.9"
+groups = ["test"]
+files = [
+    {file = "importlib_metadata-8.7.0-py3-none-any.whl", hash = "sha256:e5dd1551894c77868a30651cef00984d50e1002d06942a7101d34870c5f02afd"},
+    {file = "importlib_metadata-8.7.0.tar.gz", hash = "sha256:d13b81ad223b890aa16c5471f2ac3056cf76c5f10f82d6f9292f0b415f389000"},
+]
+
+[package.dependencies]
+zipp = ">=3.20"
+
+[package.extras]
+check = ["pytest-checkdocs (>=2.4)", "pytest-ruff (>=0.2.1) ; sys_platform != \"cygwin\""]
+cover = ["pytest-cov"]
+doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-lint"]
+enabler = ["pytest-enabler (>=2.2)"]
+perf = ["ipython"]
+test = ["flufl.flake8", "importlib_resources (>=1.3) ; python_version < \"3.9\"", "jaraco.test (>=5.4)", "packaging", "pyfakefs", "pytest (>=6,!=8.1.*)", "pytest-perf (>=0.9.2)"]
+type = ["pytest-mypy"]
+
+[[package]]
 name = "importlib-resources"
 version = "6.5.2"
 description = "Read resources from Python packages"
@@ -1326,14 +1377,14 @@ test = ["flaky", "ipyparallel", "pre-commit", "pytest (>=7.0)", "pytest-asyncio 
 
 [[package]]
 name = "ipython"
-version = "9.2.0"
+version = "9.3.0"
 description = "IPython: Productive Interactive Computing"
 optional = false
 python-versions = ">=3.11"
 groups = ["debug", "dev", "docs"]
 files = [
-    {file = "ipython-9.2.0-py3-none-any.whl", hash = "sha256:fef5e33c4a1ae0759e0bba5917c9db4eb8c53fee917b6a526bd973e1ca5159f6"},
-    {file = "ipython-9.2.0.tar.gz", hash = "sha256:62a9373dbc12f28f9feaf4700d052195bf89806279fc8ca11f3f54017d04751b"},
+    {file = "ipython-9.3.0-py3-none-any.whl", hash = "sha256:1a0b6dd9221a1f5dddf725b57ac0cb6fddc7b5f470576231ae9162b9b3455a04"},
+    {file = "ipython-9.3.0.tar.gz", hash = "sha256:79eb896f9f23f50ad16c3bc205f686f6e030ad246cc309c6279a242b14afe9d8"},
 ]
 
 [package.dependencies]
@@ -1596,14 +1647,14 @@ files = [
 
 [[package]]
 name = "jupytext"
-version = "1.16.7"
+version = "1.17.2"
 description = "Jupyter notebooks as Markdown documents, Julia, Python or R scripts"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["dev", "docs"]
 files = [
-    {file = "jupytext-1.16.7-py3-none-any.whl", hash = "sha256:912f9d9af7bd3f15470105e5c5dddf1669b2d8c17f0c55772687fc5a4a73fe69"},
-    {file = "jupytext-1.16.7.tar.gz", hash = "sha256:fc4e97f0890e22062c4ef10313c7ca960b07b3767246a1fef7585888cc2afe5d"},
+    {file = "jupytext-1.17.2-py3-none-any.whl", hash = "sha256:4f85dc43bb6a24b75491c5c434001ad5ef563932f68f15dd3e1c8ce12a4a426b"},
+    {file = "jupytext-1.17.2.tar.gz", hash = "sha256:772d92898ac1f2ded69106f897b34af48ce4a85c985fa043a378ff5a65455f02"},
 ]
 
 [package.dependencies]
@@ -1614,14 +1665,14 @@ packaging = "*"
 pyyaml = "*"
 
 [package.extras]
-dev = ["autopep8", "black", "flake8", "gitpython", "ipykernel", "isort", "jupyter-fs (>=1.0)", "jupyter-server (!=2.11)", "nbconvert", "pre-commit", "pytest", "pytest-cov (>=2.6.1)", "pytest-randomly", "pytest-xdist", "sphinx (<8)", "sphinx-gallery (<0.8)"]
+dev = ["autopep8", "black", "flake8", "gitpython", "ipykernel", "isort", "jupyter-fs (>=1.0)", "jupyter-server (!=2.11)", "nbconvert", "pre-commit", "pytest", "pytest-asyncio", "pytest-cov (>=2.6.1)", "pytest-randomly", "pytest-xdist", "sphinx", "sphinx-gallery (>=0.8)"]
 docs = ["myst-parser", "sphinx", "sphinx-copybutton", "sphinx-rtd-theme"]
-test = ["pytest", "pytest-randomly", "pytest-xdist"]
-test-cov = ["ipykernel", "jupyter-server (!=2.11)", "nbconvert", "pytest", "pytest-cov (>=2.6.1)", "pytest-randomly", "pytest-xdist"]
-test-external = ["autopep8", "black", "flake8", "gitpython", "ipykernel", "isort", "jupyter-fs (>=1.0)", "jupyter-server (!=2.11)", "nbconvert", "pre-commit", "pytest", "pytest-randomly", "pytest-xdist", "sphinx (<8)", "sphinx-gallery (<0.8)"]
-test-functional = ["pytest", "pytest-randomly", "pytest-xdist"]
-test-integration = ["ipykernel", "jupyter-server (!=2.11)", "nbconvert", "pytest", "pytest-randomly", "pytest-xdist"]
-test-ui = ["calysto-bash"]
+test = ["pytest", "pytest-asyncio", "pytest-randomly", "pytest-xdist"]
+test-cov = ["black", "ipykernel", "jupyter-server (!=2.11)", "nbconvert", "pytest", "pytest-asyncio", "pytest-cov (>=2.6.1)", "pytest-randomly", "pytest-xdist"]
+test-external = ["autopep8", "black", "flake8", "gitpython", "ipykernel", "isort", "jupyter-fs (>=1.0)", "jupyter-server (!=2.11)", "nbconvert", "pre-commit", "pytest", "pytest-asyncio", "pytest-randomly", "pytest-xdist", "sphinx", "sphinx-gallery (>=0.8)"]
+test-functional = ["black", "pytest", "pytest-asyncio", "pytest-randomly", "pytest-xdist"]
+test-integration = ["black", "ipykernel", "jupyter-server (!=2.11)", "nbconvert", "pytest", "pytest-asyncio", "pytest-randomly", "pytest-xdist"]
+test-ui = ["bash-kernel"]
 
 [[package]]
 name = "lightning"
@@ -2013,14 +2064,14 @@ files = [
 
 [[package]]
 name = "mkapi"
-version = "4.4.0"
+version = "4.4.1"
 description = "MkDocs plugin for automatic API documentation generation from Python docstrings"
 optional = false
 python-versions = ">=3.10"
 groups = ["docs"]
 files = [
-    {file = "mkapi-4.4.0-py3-none-any.whl", hash = "sha256:dc92c4399951b2699d0c7f8b3ce9f12e7effbf4f7df428d03b95ec1ec1658137"},
-    {file = "mkapi-4.4.0.tar.gz", hash = "sha256:5476f2e88af230ec62d394d4b8e1e1be526e376a407b3763d544b5d436536916"},
+    {file = "mkapi-4.4.1-py3-none-any.whl", hash = "sha256:4ca4215273b9f374df691e6a46344a8f4cdf3ef405ef7c9ff063ff4e5903893f"},
+    {file = "mkapi-4.4.1.tar.gz", hash = "sha256:74415292b50065efafe118323ce8285d82ae6a91528296b6f62f44cd8a07c70b"},
 ]
 
 [package.dependencies]
@@ -2096,14 +2147,14 @@ pyyaml = ">=5.1"
 
 [[package]]
 name = "mkdocs-git-authors-plugin"
-version = "0.9.5"
+version = "0.10.0"
 description = "Mkdocs plugin to display git authors of a page"
 optional = false
 python-versions = ">=3.8"
 groups = ["docs"]
 files = [
-    {file = "mkdocs_git_authors_plugin-0.9.5-py3-none-any.whl", hash = "sha256:acdacc8452db90a94d9c395a230b16965a9f2f51e0a6eef182ac7d3e02e394fb"},
-    {file = "mkdocs_git_authors_plugin-0.9.5.tar.gz", hash = "sha256:e19f0252ead3d626fd73e15bb56d6675704c3b62aa569ebc363f791291b8f60e"},
+    {file = "mkdocs_git_authors_plugin-0.10.0-py3-none-any.whl", hash = "sha256:28421a99c3e872a8e205674bb80ec48524838243e5f59eaf9bd97df103e38901"},
+    {file = "mkdocs_git_authors_plugin-0.10.0.tar.gz", hash = "sha256:29d1973b2835663d79986fb756e02f1f0ff3fe35c278e993206bd3c550c205e4"},
 ]
 
 [package.dependencies]
@@ -2111,14 +2162,14 @@ mkdocs = ">=1.0"
 
 [[package]]
 name = "mkdocs-git-revision-date-localized-plugin"
-version = "1.4.5"
+version = "1.4.7"
 description = "Mkdocs plugin that enables displaying the localized date of the last git modification of a markdown file."
 optional = false
 python-versions = ">=3.8"
 groups = ["docs"]
 files = [
-    {file = "mkdocs_git_revision_date_localized_plugin-1.4.5-py3-none-any.whl", hash = "sha256:395ae0b9eec565c78a76fffc938b70f52774bf2971245482d31aba47018c5fa9"},
-    {file = "mkdocs_git_revision_date_localized_plugin-1.4.5.tar.gz", hash = "sha256:9e37f1343d314c9cd8f9cbbf117c4bdc1d2d24a0653c5bbd7059d072f2cd0972"},
+    {file = "mkdocs_git_revision_date_localized_plugin-1.4.7-py3-none-any.whl", hash = "sha256:056c0a90242409148f1dc94d5c9d2c25b5b8ddd8de45489fa38f7fa7ccad2bc4"},
+    {file = "mkdocs_git_revision_date_localized_plugin-1.4.7.tar.gz", hash = "sha256:10a49eff1e1c3cb766e054b9d8360c904ce4fe8c33ac3f6cc083ac6459c91953"},
 ]
 
 [package.dependencies]
@@ -3235,12 +3286,46 @@ files = [
 typing-extensions = ">=4.6.0,<4.7.0 || >4.7.0"
 
 [[package]]
+name = "pygal"
+version = "3.0.5"
+description = "A Python svg graph plotting library"
+optional = false
+python-versions = ">=3.8"
+groups = ["test"]
+files = [
+    {file = "pygal-3.0.5-py3-none-any.whl", hash = "sha256:a3268a5667b470c8fbbb0eca7e987561a7321caeba589d40e4c1bc16dbe71393"},
+    {file = "pygal-3.0.5.tar.gz", hash = "sha256:c0a0f34e5bc1c01975c2bfb8342ad521e293ad42e525699dd00c4d7a52c14b71"},
+]
+
+[package.dependencies]
+importlib-metadata = "*"
+
+[package.extras]
+docs = ["pygal-sphinx-directives", "sphinx", "sphinx-rtd-theme"]
+lxml = ["lxml"]
+moulinrouge = ["flask", "pygal-maps-ch", "pygal-maps-fr", "pygal-maps-world"]
+png = ["cairosvg"]
+test = ["cairosvg", "coveralls", "lxml", "pyquery", "pytest", "pytest-cov", "ruff (>=0.5.6)"]
+
+[[package]]
+name = "pygaljs"
+version = "1.0.2"
+description = "Python package providing assets from https://github.com/Kozea/pygal.js"
+optional = false
+python-versions = "*"
+groups = ["test"]
+files = [
+    {file = "pygaljs-1.0.2-py2.py3-none-any.whl", hash = "sha256:d75e18cb21cc2cda40c45c3ee690771e5e3d4652bf57206f20137cf475c0dbe8"},
+    {file = "pygaljs-1.0.2.tar.gz", hash = "sha256:0b71ee32495dcba5fbb4a0476ddbba07658ad65f5675e4ad409baf154dec5111"},
+]
+
+[[package]]
 name = "pygments"
 version = "2.19.1"
 description = "Pygments is a syntax highlighting package written in Python."
 optional = false
 python-versions = ">=3.8"
-groups = ["debug", "dev", "docs"]
+groups = ["debug", "dev", "docs", "test"]
 files = [
     {file = "pygments-2.19.1-py3-none-any.whl", hash = "sha256:9ea1544ad55cecf4b8242fab6dd35a93bbce657034b0611ee383099054ab6d8c"},
     {file = "pygments-2.19.1.tar.gz", hash = "sha256:61c16d2a8576dc0649d9f39e089b5f02bcd27fba10d8fb4dcc28173f7a45151f"},
@@ -3270,14 +3355,14 @@ extra = ["pygments (>=2.12)"]
 
 [[package]]
 name = "pyright"
-version = "1.1.400"
+version = "1.1.402"
 description = "Command line wrapper for pyright"
 optional = false
 python-versions = ">=3.7"
 groups = ["dev"]
 files = [
-    {file = "pyright-1.1.400-py3-none-any.whl", hash = "sha256:c80d04f98b5a4358ad3a35e241dbf2a408eee33a40779df365644f8054d2517e"},
-    {file = "pyright-1.1.400.tar.gz", hash = "sha256:b8a3ba40481aa47ba08ffb3228e821d22f7d391f83609211335858bf05686bdb"},
+    {file = "pyright-1.1.402-py3-none-any.whl", hash = "sha256:2c721f11869baac1884e846232800fe021c33f1b4acb3929cff321f7ea4e2982"},
+    {file = "pyright-1.1.402.tar.gz", hash = "sha256:85a33c2d40cd4439c66aa946fd4ce71ab2f3f5b8c22ce36a623f59ac22937683"},
 ]
 
 [package.dependencies]
@@ -3291,24 +3376,25 @@ nodejs = ["nodejs-wheel-binaries"]
 
 [[package]]
 name = "pytest"
-version = "8.3.5"
+version = "8.4.0"
 description = "pytest: simple powerful testing with Python"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["test"]
 files = [
-    {file = "pytest-8.3.5-py3-none-any.whl", hash = "sha256:c69214aa47deac29fad6c2a4f590b9c4a9fdb16a403176fe154b79c0b4d4d820"},
-    {file = "pytest-8.3.5.tar.gz", hash = "sha256:f4efe70cc14e511565ac476b57c279e12a855b11f48f212af1080ef2263d3845"},
+    {file = "pytest-8.4.0-py3-none-any.whl", hash = "sha256:f40f825768ad76c0977cbacdf1fd37c6f7a468e460ea6a0636078f8972d4517e"},
+    {file = "pytest-8.4.0.tar.gz", hash = "sha256:14d920b48472ea0dbf68e45b96cd1ffda4705f33307dcc86c676c1b5104838a6"},
 ]
 
 [package.dependencies]
-colorama = {version = "*", markers = "sys_platform == \"win32\""}
-iniconfig = "*"
-packaging = "*"
+colorama = {version = ">=0.4", markers = "sys_platform == \"win32\""}
+iniconfig = ">=1"
+packaging = ">=20"
 pluggy = ">=1.5,<2"
+pygments = ">=2.7.2"
 
 [package.extras]
-dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
+dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "requests", "setuptools", "xmlschema"]
 
 [[package]]
 name = "pytest-benchmark"
@@ -3323,8 +3409,12 @@ files = [
 ]
 
 [package.dependencies]
+aspectlib = {version = "*", optional = true, markers = "extra == \"aspect\""}
 py-cpuinfo = "*"
+pygal = {version = "*", optional = true, markers = "extra == \"histogram\""}
+pygaljs = {version = "*", optional = true, markers = "extra == \"histogram\""}
 pytest = ">=8.1"
+setuptools = {version = "*", optional = true, markers = "extra == \"histogram\""}
 
 [package.extras]
 aspect = ["aspectlib"]
@@ -3333,36 +3423,38 @@ histogram = ["pygal", "pygaljs", "setuptools"]
 
 [[package]]
 name = "pytest-cases"
-version = "3.8.6"
+version = "3.9.1"
 description = "Separate test code from test cases in pytest."
 optional = false
 python-versions = "*"
 groups = ["test"]
 files = [
-    {file = "pytest_cases-3.8.6-py2.py3-none-any.whl", hash = "sha256:564c722492ea7e7ec3ac433fd14070180e65866f49fa35bfe938c0d5d9afba67"},
-    {file = "pytest_cases-3.8.6.tar.gz", hash = "sha256:5c24e0ab0cb6f8e802a469b7965906a333d3babb874586ebc56f7e2cbe1a7c44"},
+    {file = "pytest_cases-3.9.1-py2.py3-none-any.whl", hash = "sha256:60507716650c5ed1ce4a36a3c137f1c3ec58f4fef1ee8678404be074612fcd21"},
+    {file = "pytest_cases-3.9.1.tar.gz", hash = "sha256:c4e181f1b525c931a318d4812fa8de656c2c8fb77fccf1571ecf0cc5fe8e7f8f"},
 ]
 
 [package.dependencies]
 decopatch = "*"
 makefun = ">=1.15.1"
 packaging = "*"
+pytest = "*"
 
 [[package]]
 name = "pytest-cov"
-version = "6.1.1"
+version = "6.2.1"
 description = "Pytest plugin for measuring coverage."
 optional = false
 python-versions = ">=3.9"
 groups = ["test"]
 files = [
-    {file = "pytest_cov-6.1.1-py3-none-any.whl", hash = "sha256:bddf29ed2d0ab6f4df17b4c55b0a657287db8684af9c42ea546b21b1041b3dde"},
-    {file = "pytest_cov-6.1.1.tar.gz", hash = "sha256:46935f7aaefba760e716c2ebfbe1c216240b9592966e7da99ea8292d4d3e2a0a"},
+    {file = "pytest_cov-6.2.1-py3-none-any.whl", hash = "sha256:f5bc4c23f42f1cdd23c70b1dab1bbaef4fc505ba950d53e0081d0730dd7e86d5"},
+    {file = "pytest_cov-6.2.1.tar.gz", hash = "sha256:25cc6cc0a5358204b8108ecedc51a9b57b34cc6b8c967cc2c01a4e00d8a67da2"},
 ]
 
 [package.dependencies]
 coverage = {version = ">=7.5", extras = ["toml"]}
-pytest = ">=4.6"
+pluggy = ">=1.2"
+pytest = ">=6.2.5"
 
 [package.extras]
 testing = ["fields", "hunter", "process-tests", "pytest-xdist", "virtualenv"]
@@ -3384,14 +3476,14 @@ pytest = ">=6.0.0"
 
 [[package]]
 name = "pytest-mock"
-version = "3.14.0"
+version = "3.14.1"
 description = "Thin-wrapper around the mock package for easier use with pytest"
 optional = false
 python-versions = ">=3.8"
 groups = ["test"]
 files = [
-    {file = "pytest-mock-3.14.0.tar.gz", hash = "sha256:2719255a1efeceadbc056d6bf3df3d1c5015530fb40cf347c0f9afac88410bd0"},
-    {file = "pytest_mock-3.14.0-py3-none-any.whl", hash = "sha256:0b72c38033392a5f4621342fe11e9219ac11ec9d375f8e2a0c164539e0d70f6f"},
+    {file = "pytest_mock-3.14.1-py3-none-any.whl", hash = "sha256:178aefcd11307d874b4cd3100344e7e2d888d9791a6a1d9bfe90fbc1b74fd1d0"},
+    {file = "pytest_mock-3.14.1.tar.gz", hash = "sha256:159e9edac4c451ce77a5cdb9fc5d1100708d2dd4ba3c3df572f14097351af80e"},
 ]
 
 [package.dependencies]
@@ -3889,30 +3981,30 @@ files = [
 
 [[package]]
 name = "ruff"
-version = "0.11.10"
+version = "0.11.13"
 description = "An extremely fast Python linter and code formatter, written in Rust."
 optional = false
 python-versions = ">=3.7"
 groups = ["dev"]
 files = [
-    {file = "ruff-0.11.10-py3-none-linux_armv6l.whl", hash = "sha256:859a7bfa7bc8888abbea31ef8a2b411714e6a80f0d173c2a82f9041ed6b50f58"},
-    {file = "ruff-0.11.10-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:968220a57e09ea5e4fd48ed1c646419961a0570727c7e069842edd018ee8afed"},
-    {file = "ruff-0.11.10-py3-none-macosx_11_0_arm64.whl", hash = "sha256:1067245bad978e7aa7b22f67113ecc6eb241dca0d9b696144256c3a879663bca"},
-    {file = "ruff-0.11.10-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f4854fd09c7aed5b1590e996a81aeff0c9ff51378b084eb5a0b9cd9518e6cff2"},
-    {file = "ruff-0.11.10-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:8b4564e9f99168c0f9195a0fd5fa5928004b33b377137f978055e40008a082c5"},
-    {file = "ruff-0.11.10-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:5b6a9cc5b62c03cc1fea0044ed8576379dbaf751d5503d718c973d5418483641"},
-    {file = "ruff-0.11.10-py3-none-manylinux_2_17_ppc64.manylinux2014_ppc64.whl", hash = "sha256:607ecbb6f03e44c9e0a93aedacb17b4eb4f3563d00e8b474298a201622677947"},
-    {file = "ruff-0.11.10-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:7b3a522fa389402cd2137df9ddefe848f727250535c70dafa840badffb56b7a4"},
-    {file = "ruff-0.11.10-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:2f071b0deed7e9245d5820dac235cbdd4ef99d7b12ff04c330a241ad3534319f"},
-    {file = "ruff-0.11.10-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:4a60e3a0a617eafba1f2e4186d827759d65348fa53708ca547e384db28406a0b"},
-    {file = "ruff-0.11.10-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:da8ec977eaa4b7bf75470fb575bea2cb41a0e07c7ea9d5a0a97d13dbca697bf2"},
-    {file = "ruff-0.11.10-py3-none-musllinux_1_2_armv7l.whl", hash = "sha256:ddf8967e08227d1bd95cc0851ef80d2ad9c7c0c5aab1eba31db49cf0a7b99523"},
-    {file = "ruff-0.11.10-py3-none-musllinux_1_2_i686.whl", hash = "sha256:5a94acf798a82db188f6f36575d80609072b032105d114b0f98661e1679c9125"},
-    {file = "ruff-0.11.10-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:3afead355f1d16d95630df28d4ba17fb2cb9c8dfac8d21ced14984121f639bad"},
-    {file = "ruff-0.11.10-py3-none-win32.whl", hash = "sha256:dc061a98d32a97211af7e7f3fa1d4ca2fcf919fb96c28f39551f35fc55bdbc19"},
-    {file = "ruff-0.11.10-py3-none-win_amd64.whl", hash = "sha256:5cc725fbb4d25b0f185cb42df07ab6b76c4489b4bfb740a175f3a59c70e8a224"},
-    {file = "ruff-0.11.10-py3-none-win_arm64.whl", hash = "sha256:ef69637b35fb8b210743926778d0e45e1bffa850a7c61e428c6b971549b5f5d1"},
-    {file = "ruff-0.11.10.tar.gz", hash = "sha256:d522fb204b4959909ecac47da02830daec102eeb100fb50ea9554818d47a5fa6"},
+    {file = "ruff-0.11.13-py3-none-linux_armv6l.whl", hash = "sha256:4bdfbf1240533f40042ec00c9e09a3aade6f8c10b6414cf11b519488d2635d46"},
+    {file = "ruff-0.11.13-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:aef9c9ed1b5ca28bb15c7eac83b8670cf3b20b478195bd49c8d756ba0a36cf48"},
+    {file = "ruff-0.11.13-py3-none-macosx_11_0_arm64.whl", hash = "sha256:53b15a9dfdce029c842e9a5aebc3855e9ab7771395979ff85b7c1dedb53ddc2b"},
+    {file = "ruff-0.11.13-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:ab153241400789138d13f362c43f7edecc0edfffce2afa6a68434000ecd8f69a"},
+    {file = "ruff-0.11.13-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:6c51f93029d54a910d3d24f7dd0bb909e31b6cd989a5e4ac513f4eb41629f0dc"},
+    {file = "ruff-0.11.13-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:1808b3ed53e1a777c2ef733aca9051dc9bf7c99b26ece15cb59a0320fbdbd629"},
+    {file = "ruff-0.11.13-py3-none-manylinux_2_17_ppc64.manylinux2014_ppc64.whl", hash = "sha256:d28ce58b5ecf0f43c1b71edffabe6ed7f245d5336b17805803312ec9bc665933"},
+    {file = "ruff-0.11.13-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:55e4bc3a77842da33c16d55b32c6cac1ec5fb0fbec9c8c513bdce76c4f922165"},
+    {file = "ruff-0.11.13-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:633bf2c6f35678c56ec73189ba6fa19ff1c5e4807a78bf60ef487b9dd272cc71"},
+    {file = "ruff-0.11.13-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:4ffbc82d70424b275b089166310448051afdc6e914fdab90e08df66c43bb5ca9"},
+    {file = "ruff-0.11.13-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:4a9ddd3ec62a9a89578c85842b836e4ac832d4a2e0bfaad3b02243f930ceafcc"},
+    {file = "ruff-0.11.13-py3-none-musllinux_1_2_armv7l.whl", hash = "sha256:d237a496e0778d719efb05058c64d28b757c77824e04ffe8796c7436e26712b7"},
+    {file = "ruff-0.11.13-py3-none-musllinux_1_2_i686.whl", hash = "sha256:26816a218ca6ef02142343fd24c70f7cd8c5aa6c203bca284407adf675984432"},
+    {file = "ruff-0.11.13-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:51c3f95abd9331dc5b87c47ac7f376db5616041173826dfd556cfe3d4977f492"},
+    {file = "ruff-0.11.13-py3-none-win32.whl", hash = "sha256:96c27935418e4e8e77a26bb05962817f28b8ef3843a6c6cc49d8783b5507f250"},
+    {file = "ruff-0.11.13-py3-none-win_amd64.whl", hash = "sha256:29c3189895a8a6a657b7af4e97d330c8a3afd2c9c8f46c81e2fc5a31866517e3"},
+    {file = "ruff-0.11.13-py3-none-win_arm64.whl", hash = "sha256:b4385285e9179d608ff1d2fb9922062663c658605819a6876d8beef0c30b7f3b"},
+    {file = "ruff-0.11.13.tar.gz", hash = "sha256:26fa247dc68d1d4e72c179e08889a25ac0c7ba4d78aecfc835d49cbfd60bf514"},
 ]
 
 [[package]]
@@ -3959,7 +4051,7 @@ version = "80.7.1"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
 optional = false
 python-versions = ">=3.9"
-groups = ["main"]
+groups = ["main", "test"]
 files = [
     {file = "setuptools-80.7.1-py3-none-any.whl", hash = "sha256:ca5cc1069b85dc23070a6628e6bcecb3292acac802399c7f8edc0100619f9009"},
     {file = "setuptools-80.7.1.tar.gz", hash = "sha256:f6ffc5f0142b1bd8d0ca94ee91b30c0ca862ffd50826da1ea85258a06fd94552"},
@@ -4871,7 +4963,27 @@ idna = ">=2.0"
 multidict = ">=4.0"
 propcache = ">=0.2.1"
 
+[[package]]
+name = "zipp"
+version = "3.23.0"
+description = "Backport of pathlib-compatible object wrapper for zip files"
+optional = false
+python-versions = ">=3.9"
+groups = ["test"]
+files = [
+    {file = "zipp-3.23.0-py3-none-any.whl", hash = "sha256:071652d6115ed432f5ce1d34c336c0adfd6a884660d1e9712a256d3d3bd4b14e"},
+    {file = "zipp-3.23.0.tar.gz", hash = "sha256:a07157588a12518c9d4034df3fbbee09c814741a33ff63c05fa29d26a2404166"},
+]
+
+[package.extras]
+check = ["pytest-checkdocs (>=2.4)", "pytest-ruff (>=0.2.1) ; sys_platform != \"cygwin\""]
+cover = ["pytest-cov"]
+doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-lint"]
+enabler = ["pytest-enabler (>=2.2)"]
+test = ["big-O", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more_itertools", "pytest (>=6,!=8.1.*)", "pytest-ignore-flaky"]
+type = ["pytest-mypy"]
+
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "fb62eee301f0e623670e058ae65d85ae2173641977943f8e8b4dce1b0a1f1628"
+content-hash = "2af3179698e1b9286a0e87f7f7ad9ec59ed8552a60c661736f15319889200022"
