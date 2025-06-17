@@ -1837,14 +1837,14 @@ test = ["einops (>=0.7)", "protobuf (>=4.23.4)", "pytest (>=8.1.1)", "pytest-ben
 
 [[package]]
 name = "litserve"
-version = "0.2.10"
+version = "0.2.12"
 description = "Lightweight AI server."
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "litserve-0.2.10-py3-none-any.whl", hash = "sha256:fe9b1d99c69d76aca749f16070d9c2b1ca79b8f4aaf5be4db47d94c753f2e00e"},
-    {file = "litserve-0.2.10.tar.gz", hash = "sha256:58376835246d06967cabcf6378b5a26e5e8fcfb71a781ffb9db4ceb8401748ec"},
+    {file = "litserve-0.2.12-py3-none-any.whl", hash = "sha256:dd58f7a459d68a03954b411052f634a2c9ca3552de4afc49d264f22f698fc6b7"},
+    {file = "litserve-0.2.12.tar.gz", hash = "sha256:a427779e9310c94c3c036b8b8075538e299530800ee9e75b2a27b6437ad74c42"},
 ]
 
 [package.dependencies]
@@ -4986,4 +4986,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "6f141984869e6b8b299e46a67e6d4da9eb1584d5b8d8c23091540bae31293bf3"
+content-hash = "ed60bb483e46b147d3d0eba85dd5f38b5d4eca5eeaebd80224945a922440c2e4"
