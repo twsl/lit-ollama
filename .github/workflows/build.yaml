@@ -57,6 +57,14 @@ jobs:
           key: venv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
           restore-keys: venv-${{ runner.os }}-${{ matrix.python-version }}-
 
+      - name: Set up huggingface cache
+        uses: actions/cache@v4
+        id: cached-huggingface-dependencies
+        with:
+          path: checkpoints
+          key: checkpoints-${{ runner.os }}-${{ matrix.python-version }}
+          restore-keys: checkpoints-${{ runner.os }}-
+
       - name: Install dependencies
         # if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --all-extras
