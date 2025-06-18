@@ -1,7 +1,7 @@
 from lit_ollama.models.file import ModelFile
 
 
-def test_model_file_basic():
+def test_model_file_basic() -> None:
     mf = ModelFile()
     mf.set_base("llama")
     mf.set_parameter("foo", "bar")

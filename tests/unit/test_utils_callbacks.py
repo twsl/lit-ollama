@@ -1,5 +1,3 @@
-import types
-
 from lit_ollama.utils.callbacks import PredictionTimeLogger
 
 
@@ -7,7 +5,7 @@ class DummyLitAPI:
     pass
 
 
-def test_prediction_time_logger():
+def test_prediction_time_logger() -> None:
     cb = PredictionTimeLogger()
     cb.on_before_predict(DummyLitAPI())
     cb._start_time -= 1  # simulate 1 second elapsed

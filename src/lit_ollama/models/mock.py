@@ -1,13 +1,15 @@
 from collections.abc import Generator
 import time
 
-from litgpt import LLM
+from litgpt import GPT, LLM, Config
 import torch
+from torch import nn
 
 
 class MockLLM(LLM):
     def __init__(self) -> None:
-        pass
+        super().__init__(GPT(Config()))
+        self.mock = nn.Identity()
 
     def generate(  # pyright: ignore[reportIncompatibleMethodOverride]
         self,
