@@ -35,7 +35,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.11"
 litserve = "^0.2.15"
-litgpt = "^0.5.9"
+litgpt = "^0.5.10"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.12.9"
