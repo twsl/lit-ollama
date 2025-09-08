@@ -51,7 +51,7 @@ jupytext = " ^1.17.3"
 nbconvert = "^7.16.6"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^8.4.1"
+pytest = "^8.4.2"
 pytest-cov = "^6.2.1"
 pytest-mock = "^3.14.1"
 pytest-cases = "^3.9.1"
