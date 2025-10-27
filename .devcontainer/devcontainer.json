@@ -115,7 +115,8 @@
                 "ms-azuretools.vscode-docker",
                 "docker.docker",
                 "uctakeoff.vscode-counter",
-                "redhat.vscode-yaml"
+                "redhat.vscode-yaml",
+                "sebastienfi.dead-code-finder"
             ]
         }
     },
