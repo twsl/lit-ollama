@@ -38,34 +38,35 @@ litserve = "^0.2.16"
 litgpt = "^0.5.10"
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.14.3"
+ruff = "^0.14.4"
 bandit = "^1.8.6"
-pre-commit = "^4.3.0"
+pre-commit = "^4.4.0"
 pyright = "^1.1.407"
 vulture = "^2.14"
 copier = "^9.10.3"
 ipykernel = "^6.31.0"
 ipywidgets = "^8.1.8"
-ipython = "^9.6.0"
-jupytext = " ^1.18.1"
+ipython = "^9.7.0"
+jupytext = "^1.18.1"
 nbconvert = "^7.16.6"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^8.4.2"
+pytest = "^9.0.0"
 pytest-cov = "^7.0.0"
 pytest-mock = "^3.15.1"
 pytest-cases = "^3.9.1"
-pytest-benchmark = {extras = ["aspect","histogram"], version = "^5.2.0"}
+pytest-benchmark = {extras = ["aspect","histogram"], version = "^5.2.3"}
 pytest-github-actions-annotate-failures = "^0.3.0"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.6.1"
 mkdocs-material = "^9.6.23"
 mkdocs-git-revision-date-localized-plugin = "^1.5.0"
-mkdocs-awesome-pages-plugin = "^2.10.1"
+mkdocs-awesome-nav = "^3.2.0"
 mkdocs-git-authors-plugin = "^0.10.0"
 mkapi = "^4.5.0"
 markdown-callouts = "^0.4.0"
+pymdown-extensions = "^10.16.1"
 pygments = "^2.19.0"
 mkdocs-jupyter = "^0.25.1"
 
