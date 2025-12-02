@@ -33,6 +33,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v6
         with:
@@ -68,8 +71,8 @@ jobs:
       - name: Install dependencies
         run: poetry install --no-interaction --all-extras
 
-      - name: Run pre-commit
-        uses: pre-commit/action@v3.0.1
+      - name: Run prek
+        uses: j178/prek-action@v1
         continue-on-error: true
         env:
           SKIP: poetry-lock
