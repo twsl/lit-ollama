@@ -1,5 +1,6 @@
 from collections.abc import Generator
 import time
+from typing import Any
 
 from litgpt import GPT, LLM, Config
 import torch
@@ -12,7 +13,7 @@ class MockLLM(LLM):
         pass
 
     @torch.inference_mode()
-    def generate(
+    def generate(  # pyright: ignore[reportIncompatibleMethodOverride]
         self,
         prompt: str,
         sys_prompt: str | None = None,
@@ -22,21 +23,25 @@ class MockLLM(LLM):
         top_p: float = 1.0,
         return_as_token_ids: bool = False,
         stream: bool = False,
-    ) -> str | torch.Tensor:  # | Generator[str, None, None]: # pyright: ignore[reportInvalidTypeForm]
+    ) -> str | torch.Tensor | Generator[str, None, None]:
         result = ["Hello, ", "World!"]
         print("MockLLM.generate called")
         if stream:
-            for r in result:
-                time.sleep(2)
-                yield r  # pyright: ignore[reportReturnType]
+            # Don't use yield directly in the method, which made the entire function a generator, even when stream=False
+            def generator() -> Generator[str, Any, None]:
+                for r in result:
+                    time.sleep(2)
+                    yield r
+
+            return generator()
         else:
             time.sleep(4)
             return "".join(result)
 
     def benchmark(
         self, num_iterations: int = 1, **kwargs
-    ) -> tuple[str | torch.Tensor, dict]:  # Generator[str, None, None]
-        benchmark_dict = {}
+    ) -> tuple[str | torch.Tensor | Generator[str, None, None], dict[str, Any]]:
+        benchmark_dict: dict[str, Any] = {}
         t0 = time.perf_counter()
         outputs = self.generate(**kwargs)
         benchmark_dict.setdefault("Seconds total", []).append(time.perf_counter() - t0)
