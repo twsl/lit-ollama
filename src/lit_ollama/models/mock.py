@@ -8,29 +8,34 @@ from torch import nn
 
 class MockLLM(LLM):
     def __init__(self) -> None:
-        super().__init__(GPT(Config()))
-        self.mock = nn.Identity()
+        # super().__init__(nn.Identity())  # pyright: ignore[reportArgumentType]
+        pass
 
-    def generate(  # pyright: ignore[reportIncompatibleMethodOverride]
+    @torch.inference_mode()
+    def generate(
         self,
         prompt: str,
+        sys_prompt: str | None = None,
         max_new_tokens: int = 50,
         temperature: float = 1.0,
         top_k: int | None = None,
         top_p: float = 1.0,
         return_as_token_ids: bool = False,
         stream: bool = False,
-    ) -> str | Generator[str, None, None]:
+    ) -> str | torch.Tensor:  # | Generator[str, None, None]: # pyright: ignore[reportInvalidTypeForm]
         result = ["Hello, ", "World!"]
+        print("MockLLM.generate called")
         if stream:
             for r in result:
                 time.sleep(2)
-                yield r
+                yield r  # pyright: ignore[reportReturnType]
         else:
             time.sleep(4)
             return "".join(result)
 
-    def benchmark(self, num_iterations=1, **kwargs) -> tuple[str | Generator[str, None, None], dict]:
+    def benchmark(
+        self, num_iterations: int = 1, **kwargs
+    ) -> tuple[str | torch.Tensor, dict]:  # Generator[str, None, None]
         benchmark_dict = {}
         t0 = time.perf_counter()
         outputs = self.generate(**kwargs)

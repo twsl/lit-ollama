@@ -3,7 +3,6 @@ from enum import Enum
 from typing import Literal
 
 from pydantic.dataclasses import dataclass
-from traitlets import Int
 
 from lit_ollama.api.schema.base import GenerateOptions, Role, StructuredOutputFormat, StructuredOutputObject
 

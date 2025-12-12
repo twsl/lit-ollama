@@ -30,7 +30,7 @@ class ModelStore:
                 sha256.update(self.get_file_hash(file_path).encode())
         return sha256.hexdigest()
 
-    def load_models(self):
+    def load_models(self) -> None:
         for path in Path("checkpoints").rglob("**/*/*"):
             if path.is_dir():
                 stats = path.stat()

@@ -1,14 +1,14 @@
 from lit_ollama.models.store import ModelStore
 
 
-def test_model_store_init():
+def test_model_store_init() -> None:
     store = ModelStore()
     assert hasattr(store, "models")
     assert isinstance(store.models, dict)
 
 
-def test_model_store_methods(monkeypatch):
+def test_model_store_methods() -> None:
     store = ModelStore()
-    store.models["foo"] = object()
+    store.models["foo"] = object()  # pyright: ignore[reportArgumentType]
     store.delete_model("foo")
     assert "foo" not in store.models

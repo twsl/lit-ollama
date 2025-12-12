@@ -16,7 +16,7 @@ def test_mockllm_generate(mock_llm: MockLLM) -> None:
 
 
 def test_mockllm_benchmark(mock_llm: MockLLM) -> None:
-    out, bench = mock_llm.benchmark(prompt="hi")
+    out, bench = mock_llm.benchmark(prompt="hi")  # pyright: ignore[reportUnknownVariableType, reportUnknownMemberType]
     if hasattr(out, "__iter__"):
         list(out)
     assert "Seconds total" in bench
