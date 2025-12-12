@@ -24,7 +24,7 @@
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     // "forwardPorts": [],
     // Use 'postCreateCommand' to run commands after the container is created.
-    "postCreateCommand": "poetry install && pre-commit install",
+    "postCreateCommand": "poetry install && prek install",
     // Configure tool-specific properties.
     "customizations": {
         // Configure properties specific to VS Code.
@@ -50,6 +50,7 @@
                 "python.analysis.inlayHints.variableTypes": true,
                 "python.analysis.inlayHints.functionReturnTypes": true,
                 "python.analysis.diagnosticMode": "workspace",
+                "python.analysis.typeCheckingMode": "strict",
                 "python.sortImports": true,
                 "python.testing.autoTestDiscoverOnSaveEnabled": false,
                 "python.testing.unittestEnabled": false,
