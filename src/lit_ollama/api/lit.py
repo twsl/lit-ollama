@@ -1,5 +1,5 @@
 from collections.abc import Generator
-from typing import cast
+from typing import Any, cast
 
 from litgpt import LLM
 from litgpt.utils import auto_download_checkpoint
@@ -48,10 +48,10 @@ class LitLLMAPI(ls.LitAPI):
             # )
         print("Model successfully initialized.")
 
-    def predict(self, prompt: str, context: dict = {}, **kwargs) -> Generator:  # type: ignore  # noqa: PGH003
+    def predict(self, prompt: str, context: dict[str, Any] = {}, **kwargs) -> Generator:  # type: ignore  # noqa: PGH003
         if kwargs.get("benchmark", False):
             response, benchmark_dict = cast(
-                tuple[Generator, dict],
+                tuple[Generator, dict[str, Any]],
                 self.llm.benchmark(
                     prompt=prompt,
                     max_new_tokens=self.max_new_tokens,

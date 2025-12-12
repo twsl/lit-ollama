@@ -1,6 +1,6 @@
 from datetime import datetime
 from enum import Enum
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic.dataclasses import dataclass
 
@@ -40,7 +40,7 @@ class ChatRequest:
     messages: list[Message] | None = None
     tools: list[Tool] | None = None
     format: Literal["json"] | StructuredOutputFormat | None = None
-    options: GenerateOptions | dict | None = None
+    options: GenerateOptions | dict[str, Any] | None = None
     stream: bool | None = True
     keep_alive: str | None = "5m"
 

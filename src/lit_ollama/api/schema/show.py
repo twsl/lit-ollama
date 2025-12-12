@@ -1,3 +1,5 @@
+from typing import Any
+
 from pydantic.dataclasses import dataclass
 
 from lit_ollama.api.schema.base import ShowModelDetails
@@ -41,5 +43,5 @@ class ShowResponse:
     modelfile: str
     parameters: str
     template: str
-    details: ShowModelDetails | dict
-    model_info: dict
+    details: ShowModelDetails | dict[str, Any]
+    model_info: dict[str, Any]

@@ -53,7 +53,7 @@ class ollamaSpec(ollamaLitApi, LitSpec):  # noqa: N801
             raise ValueError("stream must be set to `True`")
         print("ollama Spec Setup complete.")
 
-    def populate_context(self, context: dict, data: Any) -> None:
+    def populate_context(self, context: dict[str, Any], data: Any) -> None:
         # data_dict = data.dict()
         # data.pop("messages")
         context["raw"] = data
@@ -66,7 +66,7 @@ class ollamaSpec(ollamaLitApi, LitSpec):  # noqa: N801
     def endpoints(self) -> list[tuple[str, Callable, list[str]]]:
         return self._endpoints.copy()
 
-    def decode_request(self, request: Any, **kwargs: dict) -> Any:  # pyright: ignore [reportIncompatibleMethodOverride]
+    def decode_request(self, request: Any, **kwargs: Any) -> Any:  # pyright: ignore [reportIncompatibleMethodOverride]
         """Convert the request payload to your model input."""
         return request
 
@@ -76,7 +76,7 @@ class ollamaSpec(ollamaLitApi, LitSpec):  # noqa: N801
     # def unbatch(self, output) -> Generator[Any, Any, None]:
     #     yield output
 
-    def _encode_response(self, output: Any) -> dict:
+    def _encode_response(self, output: Any) -> dict[str, Any]:
         logger.debug(output)
         return output
         return {"role": "assistant", "content": output}
@@ -99,7 +99,7 @@ class ollamaSpec(ollamaLitApi, LitSpec):  # noqa: N801
         #     raise HTTPException(500, error)
         # return {**message}
 
-    def encode_response(self, output: Any, **kwargs: dict) -> Iterator:  # pyright: ignore [reportIncompatibleMethodOverride]
+    def encode_response(self, output: Any, **kwargs: Any) -> Iterator:  # pyright: ignore [reportIncompatibleMethodOverride]
         """Convert the model output to a response payload.
 
         To enable streaming, it should yield the output.

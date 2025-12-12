@@ -2,7 +2,7 @@ from datetime import datetime
 import hashlib
 from pathlib import Path
 import shutil
-from typing import cast
+from typing import Any, cast
 
 from litgpt.utils import auto_download_checkpoint
 
@@ -49,7 +49,7 @@ class ModelStore:
                     ),
                 )
 
-    def get_model(self, model_name: str) -> dict:
+    def get_model(self, model_name: str) -> dict[str, Any]:
         model = self.models.get(model_name)
         return cast(TagModel, model).encode() if model else {}
 

@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic.dataclasses import dataclass
 
@@ -14,7 +14,7 @@ class GenerateRequest:
     prompt: str | None = None
     stream: bool | None = True
     suffix: str | None = None
-    options: GenerateOptions | dict | None = None
+    options: GenerateOptions | dict[str, Any] | None = None
     format: StructuredOutputFormat | Literal["json"] | None = None
     images: list[str] | None = None
     raw: bool | None = None

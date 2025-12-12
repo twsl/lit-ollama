@@ -1,3 +1,5 @@
+from typing import Any
+
 from pydantic.dataclasses import dataclass
 
 # https://github.com/ollama/ollama/blob/main/docs/api.md#generate-embeddings
@@ -8,7 +10,7 @@ class EmbedRequest:
     model: str
     input: str | list[str]
     truncate: bool | None = True
-    options: dict | None = None
+    options: dict[str, Any] | None = None
     leep_alive: str | None = "5m"
 
 

@@ -1,5 +1,6 @@
 from datetime import datetime
 from enum import Enum
+from typing import Any
 
 from pydantic.dataclasses import dataclass
 
@@ -38,7 +39,7 @@ class StructuredOutputObject:
 
 @dataclass
 class StructuredOutputFormat(StructuredOutputObject):
-    properties: dict[str, StructuredOutputObject | dict]
+    properties: dict[str, StructuredOutputObject | dict[str, Any]]
     required: list[str]
 
 
