@@ -35,3 +35,19 @@ class GenerateResponse:
     prompt_eval_duration: int | None = None
     eval_count: int | None = None
     eval_duration: int | None = None
+
+    def serialize(self):
+        data = self.__dict__.copy()
+        if isinstance(self.created_at, datetime):
+            data["created_at"] = self.created_at.isoformat()
+        # Remove None values to keep response clean
+        return {k: v for k, v in data.items() if v is not None}
+
+    @classmethod
+    def deserialize(cls, data):
+        if "created_at" in data and isinstance(data["created_at"], str):
+            try:  # noqa: SIM105
+                data["created_at"] = datetime.fromisoformat(data["created_at"])
+            except ValueError:
+                pass
+        return cls(**data)

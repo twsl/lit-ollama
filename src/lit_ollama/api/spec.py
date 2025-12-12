@@ -29,6 +29,7 @@ class ollamaSpec(ollamaLitApi, LitSpec):  # noqa: N801
         self.add_endpoint("/api/ps", self.ps, ["GET"])
         # self.add_endpoint("/api/embeddings", self.embeddings, ["POST"]) # superseded by embed
         self.add_endpoint("/api/ls", self.ls, ["GET"])
+        self.add_endpoint("/api/version", self.version, ["GET"])
 
     def pre_setup(self, lit_api: ls.LitAPI) -> None:
         from litgpt import LLM

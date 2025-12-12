@@ -16,6 +16,17 @@ class Message:
     images: list[str] | None = None
     tool_calls: list[str] | None = None
 
+    def serialize(self):
+        data = {
+            "role": self.role if isinstance(self.role, str) else self.role.value,
+            "content": self.content,
+        }
+        if self.images is not None:
+            data["images"] = self.images
+        if self.tool_calls is not None:
+            data["tool_calls"] = self.tool_calls
+        return data
+
 
 @dataclass
 class ToolParameters(StructuredOutputObject):
@@ -63,7 +74,10 @@ class ChatResponse:
         data = self.__dict__.copy()
         if isinstance(self.created_at, datetime):
             data["created_at"] = self.created_at.isoformat()
-        return data
+        if self.message is not None:
+            data["message"] = self.message.serialize()
+        # Remove None values and zero durations to keep response clean
+        return {k: v for k, v in data.items() if v is not None and (not isinstance(v, int) or v > 0 or k == "done")}
 
     @classmethod
     def deserialize(cls, data):
