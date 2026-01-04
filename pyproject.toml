@@ -34,7 +34,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.11"
-litserve = "^0.2.16"
+litserve = "^0.2.17"
 litgpt = "^0.5.12"
 
 [tool.poetry.group.dev.dependencies]
