@@ -38,7 +38,7 @@ litserve = "^0.2.17"
 litgpt = "^0.5.12"
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.14.10"
+ruff = "^0.14.11"
 bandit = "^1.9.2"
 prek = "^0.2.25"
 pyright = "^1.1.407"
