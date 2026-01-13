@@ -11,7 +11,7 @@ copyright_year: 2024
 custom_install: true
 github_runner:
 - ubuntu-latest
-github_runner_clean: false
+github_runner_clean: true
 github_runner_python_version:
 - '3.11'
 include_databricks: false
