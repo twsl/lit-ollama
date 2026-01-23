@@ -56,7 +56,7 @@ jobs:
           restore-keys: checkpoints-${{ runner.os }}-
 
       - name: Install dependencies
-        run: uv sync --all-groups --all-extras
+        run: uv sync --all-groups --all-extras --frozen
 
       - name: Run prek
         uses: j178/prek-action@v1
