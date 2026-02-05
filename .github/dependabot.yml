@@ -25,4 +25,4 @@ updates:
     allow:
       - dependency-type: production
       - dependency-type: development
-    
+
