@@ -24,8 +24,8 @@ dependencies = [
     "litserve>=0.2.17",
 ]
 
-[project.optional-dependencies]
-extra = []
+#[project.optional-dependencies]
+#extra = []
 
 [project.urls]
 homepage = "https://twsl.github.io/lit-ollama/"

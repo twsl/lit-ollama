@@ -1386,7 +1386,6 @@ requires-dist = [
     { name = "litgpt", specifier = ">=0.5.12" },
     { name = "litserve", specifier = ">=0.2.17" },
 ]
-provides-extras = ["extra"]
 
 [package.metadata.requires-dev]
 debug = [
