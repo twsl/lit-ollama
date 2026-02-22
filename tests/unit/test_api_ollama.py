@@ -1,4 +1,4 @@
-from lit_ollama.api.ollama import ollamaLitApi
+from lit_ollama.server.ollama import ollamaLitApi
 
 
 def test_ollama_lit_api_init() -> None:

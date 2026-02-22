@@ -3,8 +3,8 @@ from typing import Any
 from pydantic import ConfigDict, Field
 from pydantic.dataclasses import dataclass
 
-from lit_ollama.api.schema.base import QuantizationType
-from lit_ollama.api.schema.chat import Message
+from lit_ollama.server.schema.base import QuantizationType
+from lit_ollama.server.schema.chat import Message
 
 # https://github.com/ollama/ollama/blob/main/docs/api.md#create-a-model
 

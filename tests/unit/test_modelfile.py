@@ -1,6 +1,6 @@
 import pytest
 
-from lit_ollama.models.file import VALID_PARAMETERS, ModelFile
+from lit_ollama.server.file import VALID_PARAMETERS, ModelFile
 
 
 def test_model_file_basic() -> None:
@@ -306,8 +306,8 @@ def test_to_create_request() -> None:
 
 
 def test_from_create_request() -> None:
-    from lit_ollama.api.schema.chat import Message
-    from lit_ollama.api.schema.create import CreateRequest
+    from lit_ollama.server.schema.chat import Message
+    from lit_ollama.server.schema.create import CreateRequest
 
     req = CreateRequest(
         model="test",
@@ -330,7 +330,7 @@ def test_from_create_request() -> None:
 
 
 def test_from_create_request_license_list() -> None:
-    from lit_ollama.api.schema.create import CreateRequest
+    from lit_ollama.server.schema.create import CreateRequest
 
     req = CreateRequest(model="test", license=["MIT", "Apache-2.0"])
     mf = ModelFile.from_create_request(req)

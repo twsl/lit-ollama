@@ -5,7 +5,7 @@ import re
 from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
-    from lit_ollama.api.schema.create import CreateRequest
+    from lit_ollama.server.schema.create import CreateRequest
 
 # Known Modelfile parameters and their expected types.
 _INT_PARAMS: set[str] = {"num_ctx", "repeat_last_n", "seed", "num_predict", "top_k", "num_keep"}
@@ -195,9 +195,8 @@ class ModelFile:
             stripped = line.strip()
 
             # Skip blanks and comments when not inside a multiline block
-            if current_field is None and current_msg_role is None:
-                if not stripped or stripped.startswith("#"):
-                    continue
+            if current_field is None and current_msg_role is None and (not stripped or stripped.startswith("#")):
+                continue
 
             # --- inside a multiline SYSTEM/TEMPLATE/LICENSE block ---
             if current_field is not None:
@@ -303,8 +302,8 @@ class ModelFile:
 
     def to_create_request(self, model: str = "") -> CreateRequest:
         """Convert this ModelFile into a ``CreateRequest`` schema object."""
-        from lit_ollama.api.schema.chat import Message
-        from lit_ollama.api.schema.create import CreateRequest
+        from lit_ollama.server.schema.chat import Message
+        from lit_ollama.server.schema.create import CreateRequest
 
         messages = [Message(role=m["role"], content=m["content"]) for m in self.messages] or None
         return CreateRequest(

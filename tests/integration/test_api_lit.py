@@ -1,6 +1,6 @@
 import pytest
 
-from lit_ollama.api.lit import LitLLMAPI
+from lit_ollama.server.api import LitOllamaAPI
 
 
 @pytest.fixture(scope="module")
@@ -9,20 +9,20 @@ def mode_name() -> str:
 
 
 @pytest.fixture(scope="module")
-def api(mode_name: str) -> LitLLMAPI:
-    api = LitLLMAPI(mode_name)
+def api(mode_name: str) -> LitOllamaAPI:
+    api = LitOllamaAPI(mode_name)
     return api
 
 
 @pytest.mark.skip("Ignore for now")
-def test_litllmapi_init(api: LitLLMAPI, mode_name: str) -> None:
+def test_litllmapi_init(api: LitOllamaAPI, mode_name: str) -> None:
     assert api.model_name == mode_name
     api.setup("cpu")
     assert hasattr(api, "llm")
 
 
 @pytest.mark.skip("Ignore for now")
-def test_litllmapi_predict(api: LitLLMAPI) -> None:
+def test_litllmapi_predict(api: LitOllamaAPI) -> None:
     api.setup("cpu")
     out = api.predict("hi")
     assert hasattr(out, "__iter__") or out is not None

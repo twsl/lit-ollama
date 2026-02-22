@@ -3,7 +3,7 @@ from typing import Any, Literal
 
 from pydantic.dataclasses import dataclass
 
-from lit_ollama.api.schema.base import GenerateOptions, StructuredOutputFormat
+from lit_ollama.server.schema.base import GenerateOptions, StructuredOutputFormat
 
 # https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-completion
 

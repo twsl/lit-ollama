@@ -1,4 +1,4 @@
-from lit_ollama.models.store import ModelStore
+from lit_ollama.store.models import ModelStore
 
 
 def test_model_store_init() -> None:

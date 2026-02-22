@@ -1,11 +1,11 @@
 from datetime import datetime
-from enum import Enum
+from enum import StrEnum
 from typing import Any
 
 from pydantic.dataclasses import dataclass
 
 
-class Role(str, Enum):
+class Role(StrEnum):
     SYSTEM = "system"
     USER = "user"
     ASSISTANT = "assistant"
@@ -13,7 +13,7 @@ class Role(str, Enum):
 
 
 # https://github.com/ollama/ollama/blob/main/docs/import.md#quantizing-a-model
-class QuantizationType(str, Enum):
+class QuantizationType(StrEnum):
     q2_K = "q2_K"  # noqa: N815
     q3_K_L = "q3_K_L"  # noqa: N815
     q3_K_M = "q3_K_M"  # noqa: N815

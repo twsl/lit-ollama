@@ -2,7 +2,7 @@ from typing import Any
 
 from pydantic.dataclasses import dataclass
 
-from lit_ollama.api.schema.base import ShowModelDetails
+from lit_ollama.server.schema.base import ShowModelDetails
 
 # https://github.com/ollama/ollama/blob/main/docs/api.md#show-model-information
 

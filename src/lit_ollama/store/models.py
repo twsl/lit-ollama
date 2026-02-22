@@ -4,6 +4,7 @@ from pathlib import Path
 import shutil
 from typing import Any, cast
 
+from litgpt.config import Config
 from litgpt.utils import auto_download_checkpoint
 
 from lit_ollama.server.schema.base import ModelDetails, TagModel
@@ -61,7 +62,7 @@ class ModelStore:
             except Exception:
                 digest = ""
 
-            # Best-effort: populate details using litgpt's name_to_config.
+            # Best-effort: populate details using litgpt's built-in config registry.
             config: Any | None = None
             # Try a few likely keys.
             rel = None
@@ -77,10 +78,11 @@ class ModelStore:
                     candidates.insert(0, f"{rel.parent.as_posix()}/{model_name}")
 
             for key in candidates:
-                cfg = get_config_by_name(key)
-                if cfg is not None:
-                    config = cfg
+                try:
+                    config = Config.from_name(key)
                     break
+                except Exception:
+                    continue
 
             if config is not None:
                 parameter_count = estimate_parameter_count(config)

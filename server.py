@@ -4,8 +4,7 @@ import os
 from dotenv import load_dotenv
 import litserve as ls
 
-from lit_ollama.api.lit import LitLLMAPI
-from lit_ollama.api.spec import ollamaSpec
+from lit_ollama.server.api import LitOllamaAPI
 
 if __name__ == "__main__":
     load_dotenv()
@@ -19,15 +18,11 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    api = LitLLMAPI(args.model)
+    api = LitOllamaAPI(args.model)
     server = ls.LitServer(
         api,
         accelerator="auto",
         devices="auto",
-        spec=ollamaSpec(),
-        # spec=ls.OpenAISpec(),
-        max_batch_size=None,
-        stream=True,
         callbacks=None,
         middlewares=None,
     )

@@ -5,16 +5,15 @@ from typing import Any
 import litserve as ls
 from litserve.specs.base import LitSpec
 
-from lit_ollama.api.lit import LitLLMAPI
-from lit_ollama.api.ollama import ollamaLitApi
+from lit_ollama.server.ollama import ollamaLitApi
 from lit_ollama.utils import logging
-
-logger = logging.get_logger(__name__)
 
 
 class ollamaSpec(ollamaLitApi, LitSpec):  # noqa: N801
     def __init__(self) -> None:
         super().__init__()
+        self.logger = logging.get_logger(__name__)
+        self.api_path = "/predict"  # default path used by LitServer; actual endpoints are defined in add_endpoint calls
         self.add_endpoint("/api/generate", self.generate, ["POST"])
         self.add_endpoint("/api/chat", self.chat, ["POST"])
         self.add_endpoint("/api/create", self.create, ["POST"])
@@ -31,13 +30,19 @@ class ollamaSpec(ollamaLitApi, LitSpec):  # noqa: N801
         self.add_endpoint("/api/ls", self.ls, ["GET"])
         self.add_endpoint("/api/version", self.version, ["GET"])
 
+    @property
+    def stream(self) -> bool:
+        return True
+
     def pre_setup(self, lit_api: ls.LitAPI) -> None:
         from litgpt import LLM
 
-        if not isinstance(lit_api, LitLLMAPI):
-            raise TypeError("LitAPI must be an instance of LitLLMApi.")
+        from lit_ollama.server.api import LitOllamaAPI
 
-        if not hasattr(lit_api, "llm") or not isinstance(lit_api.llm, LLM):  # type: ignore  # noqa: PGH003
+        if not isinstance(lit_api, LitOllamaAPI):
+            raise TypeError(f"LitAPI must be an instance of {LitOllamaAPI.__name__}.")
+
+        if not hasattr(lit_api, "llm") or not isinstance(lit_api.llm, LLM):  # noqa: PGH003
             raise ValueError("LitAPI must have an attribute 'llm' of type LLM")
 
         if not inspect.isgeneratorfunction(lit_api.predict):
@@ -50,9 +55,9 @@ class ollamaSpec(ollamaLitApi, LitSpec):  # noqa: N801
 
     def setup(self, server: ls.LitServer) -> None:
         super().setup(server)
-        if not server.stream:
+        if not server.lit_api.stream:
             raise ValueError("stream must be set to `True`")
-        print("ollama Spec Setup complete.")
+        self.logger.info("ollama Spec Setup complete.")
 
     def populate_context(self, context: dict[str, Any], data: Any) -> None:
         # data_dict = data.dict()
@@ -78,7 +83,7 @@ class ollamaSpec(ollamaLitApi, LitSpec):  # noqa: N801
     #     yield output
 
     def _encode_response(self, output: Any) -> dict[str, Any]:
-        logger.debug(output)
+        self.logger.debug(output)
         return output
         return {"role": "assistant", "content": output}
         # if isinstance(output, str):
@@ -108,13 +113,13 @@ class ollamaSpec(ollamaLitApi, LitSpec):  # noqa: N801
         """
         if inspect.isgenerator(output):
             for out in output:
-                logger.debug(f"spec out: {out}")
+                self.logger.debug(f"spec out: {out}")
                 yield self._encode_response(out)
         elif isinstance(output, list | tuple):
             output, bench = output
             for out in output:
-                logger.debug(f"spec out: {out}")
+                self.logger.debug(f"spec out: {out}")
                 yield self._encode_response(out)
         else:
-            logger.debug(f"spec out: {output}")
+            self.logger.debug(f"spec out: {output}")
             yield self._encode_response(output)

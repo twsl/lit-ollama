@@ -1,18 +1,18 @@
 from datetime import datetime
 
-from lit_ollama.api.schema.base import ModelDetails, RunningModel, TagModel
-from lit_ollama.api.schema.chat import ChatResponse, Message
-from lit_ollama.api.schema.copy import CopyRequest
-from lit_ollama.api.schema.create import CreateRequest, CreateResponse
-from lit_ollama.api.schema.custom.ls import LsResponse
-from lit_ollama.api.schema.delete import DeleteRequest
-from lit_ollama.api.schema.embed import EmbedRequest, EmbedResponse
-from lit_ollama.api.schema.generate import GenerateRequest, GenerateResponse
-from lit_ollama.api.schema.ps import PsResponse
-from lit_ollama.api.schema.pull import PullRequest, PullResponse
-from lit_ollama.api.schema.push import PushRequest, PushResponse
-from lit_ollama.api.schema.show import ShowRequest, ShowResponse
-from lit_ollama.api.schema.tags import TagsResponse
+from lit_ollama.server.schema.base import ModelDetails, RunningModel, TagModel
+from lit_ollama.server.schema.chat import ChatResponse, Message
+from lit_ollama.server.schema.copy import CopyRequest
+from lit_ollama.server.schema.create import CreateRequest, CreateResponse
+from lit_ollama.server.schema.custom.ls import LsResponse
+from lit_ollama.server.schema.delete import DeleteRequest
+from lit_ollama.server.schema.embed import EmbedRequest, EmbedResponse
+from lit_ollama.server.schema.generate import GenerateRequest, GenerateResponse
+from lit_ollama.server.schema.ps import PsResponse
+from lit_ollama.server.schema.pull import PullRequest, PullResponse
+from lit_ollama.server.schema.push import PushRequest, PushResponse
+from lit_ollama.server.schema.show import ShowRequest, ShowResponse
+from lit_ollama.server.schema.tags import TagsResponse
 
 
 def test_model_details() -> None:

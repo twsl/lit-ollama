@@ -1,4 +1,4 @@
-from lit_ollama.api.schema.base import QuantizationType
+from lit_ollama.server.schema.base import QuantizationType
 from lit_ollama.utils.quantization import quantize_mapping
 
 
