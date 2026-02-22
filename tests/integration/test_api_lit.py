@@ -14,16 +14,6 @@ class TestVersion:
         assert len(body["version"]) > 0
 
 
-class TestLs:
-    def test_ls_returns_model_list(self, base_url: str) -> None:
-        """GET /api/ls returns a list of known litgpt model names."""
-        r = httpx.get(f"{base_url}/api/ls")
-        assert r.status_code == 200
-        body = r.json()
-        assert "models" in body
-        assert isinstance(body["models"], list)
-
-
 class TestList:
     def test_list_models(self, client: Client) -> None:
         """client.list() -> ListResponse with a models list."""
@@ -37,8 +27,7 @@ class TestList:
         r = httpx.get(f"{base_url}/api/tags")
         assert r.status_code == 200
         body = r.json()
-        assert "tags" in body
-        assert isinstance(body["tags"], list)
+        assert isinstance(body["models"], list)
 
 
 class TestGenerate:

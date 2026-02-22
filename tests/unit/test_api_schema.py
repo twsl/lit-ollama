@@ -4,7 +4,6 @@ from lit_ollama.server.schema.base import ModelDetails, RunningModel, TagModel
 from lit_ollama.server.schema.chat import ChatResponse, Message
 from lit_ollama.server.schema.copy import CopyRequest
 from lit_ollama.server.schema.create import CreateRequest, CreateResponse
-from lit_ollama.server.schema.custom.ls import LsResponse
 from lit_ollama.server.schema.delete import DeleteRequest
 from lit_ollama.server.schema.embed import EmbedRequest, EmbedResponse
 from lit_ollama.server.schema.generate import GenerateRequest, GenerateResponse
@@ -42,11 +41,6 @@ def test_copy_request() -> None:
 def test_create_response() -> None:
     c = CreateResponse("ok")
     assert c.status == "ok"
-
-
-def test_ls_response() -> None:
-    l = LsResponse(["foo"])
-    assert l.models == ["foo"]
 
 
 def test_delete_request() -> None:
