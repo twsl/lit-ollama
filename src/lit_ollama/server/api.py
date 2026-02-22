@@ -58,7 +58,7 @@ class LitOllamaAPI(ls.LitAPI):
                 tuple[Generator, dict[str, Any]],
                 self.llm.benchmark(
                     prompt=prompt,
-                    max_new_tokens=float(kwargs.get("max_new_tokens", 50)),
+                    max_new_tokens=int(kwargs.get("max_new_tokens", 50)),
                     temperature=float(kwargs.get("temperature", 1)),
                     top_k=kwargs.get("top_k"),
                     top_p=float(kwargs.get("top_p", 1)),
@@ -70,7 +70,7 @@ class LitOllamaAPI(ls.LitAPI):
                 Generator,
                 self.llm.generate(
                     prompt,
-                    max_new_tokens=float(kwargs.get("max_new_tokens", 50)),
+                    max_new_tokens=int(kwargs.get("max_new_tokens", 50)),
                     temperature=float(kwargs.get("temperature", 1)),
                     top_k=kwargs.get("top_k"),
                     top_p=float(kwargs.get("top_p", 1)),

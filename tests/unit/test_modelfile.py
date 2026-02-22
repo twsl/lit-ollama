@@ -1,6 +1,6 @@
 import pytest
 
-from lit_ollama.server.file import VALID_PARAMETERS, ModelFile
+from lit_ollama.server.ollama.file import VALID_PARAMETERS, ModelFile
 
 
 def test_model_file_basic() -> None:

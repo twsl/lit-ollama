@@ -18,13 +18,28 @@ class CreateRequest:
     template: str | None = None
     license: str | list[str] | None = None
     system: str | None = None
+    # https://github.com/ollama/ollama/blob/main/docs/modelfile.mdx#valid-parameters-and-values
     parameters: dict[str, Any] | None = None
     messages: list[Message] | None = None
     stream: bool | None = None
     quantize: QuantizationType | str | None = None
-    modelfile: str | None = None  # raw Modelfile text (legacy / convenience)
 
 
 @dataclass
 class CreateResponse:
     status: str
+    digest: str | None = None
+    total: int | None = None
+    completed: int | None = None
+
+    def serialize(self) -> dict[str, Any]:
+        d = {
+            "status": self.status,
+        }
+        if self.digest is not None:
+            d["digest"] = self.digest
+        if self.total is not None:
+            d["total"] = self.total
+        if self.completed is not None:
+            d["completed"] = self.completed
+        return d
