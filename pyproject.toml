@@ -79,6 +79,9 @@ debug = [
     "ipdb>=0.13.9",
     "line-profiler>=5.0.1",
 ]
+client = [
+    "ollama>=0.6.1"
+]
 
 [project.scripts]
 lit-ollama = "lit_ollama.cli:main"

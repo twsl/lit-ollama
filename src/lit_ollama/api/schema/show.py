@@ -45,3 +45,4 @@ class ShowResponse:
     template: str
     details: ShowModelDetails | dict[str, Any]
     model_info: dict[str, Any]
+    capabilities: list[str] | None = None

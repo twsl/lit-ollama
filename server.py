@@ -1,3 +1,4 @@
+import argparse
 import os
 
 from dotenv import load_dotenv
@@ -5,15 +6,20 @@ import litserve as ls
 
 from lit_ollama.api.lit import LitLLMAPI
 from lit_ollama.api.spec import ollamaSpec
-from lit_ollama.models.mock import MockLLM
 
 if __name__ == "__main__":
     load_dotenv()
-    m = MockLLM()
-    print(type(m))
-    print(m.__class__.__mro__)
-    asd = m.generate("hi")
-    api = LitLLMAPI("meta-llama/Llama-3.2-1B-Instruct")
+
+    parser = argparse.ArgumentParser(description="LitLLM Ollama-compatible server")
+    parser.add_argument(
+        "--model",
+        type=str,
+        default="mock",
+        help="LitLLM model name to load (default: mock)",
+    )
+    args = parser.parse_args()
+
+    api = LitLLMAPI(args.model)
     server = ls.LitServer(
         api,
         accelerator="auto",

@@ -400,23 +400,24 @@ class ollamaLitApi:  # noqa: N801
         self, request: Request, response: Response, data: CreateRequest, background_tasks: BackgroundTasks
     ) -> StreamingResponse:
         def create_stream(data: CreateRequest) -> Generator:
-            if data.modelfile:
-                yield CreateResponse(status="reading model metadata")
-                # system prompts, override llm.prompt_style, use PromptStyle.from_config
-                pass
+            if data.from_:
+                yield CreateResponse(status=f"reading model metadata from {data.from_}")
+
+            if data.system:
+                yield CreateResponse(status="creating system layer")
+
+            if data.files:
+                for name, digest in data.files.items():
+                    yield CreateResponse(status=f"using file {name} ({digest})")
+
+            if data.adapters:
+                for name, digest in data.adapters.items():
+                    yield CreateResponse(status=f"using adapter {name} ({digest})")
 
             if data.quantize:
                 yield CreateResponse(status=f"quantizing F16 model to {data.quantize}")
 
             self.llm_api.initialize_model("")
-            # {"status":"creating system layer"}
-            # {"status":"using already created layer sha256:22f7f8ef5f4c791c1b03d7eb414399294764d7cc82c7e94aa81a1feb80a983a2"}
-            # {"status":"using already created layer sha256:8c17c2ebb0ea011be9981cc3922db8ca8fa61e828c5d3f44cb6ae342bf80460b"}
-            # {"status":"using already created layer sha256:7c23fb36d80141c4ab8cdbb61ee4790102ebd2bf7aeff414453177d4f2110e5d"}
-            # {"status":"using already created layer sha256:2e0493f67d0c8c9c68a8aeacdf6a38a2151cb3c4c1d42accf296e19810527988"}
-            # {"status":"using already created layer sha256:2759286baa875dc22de5394b4a925701b1896a7e3f8e53275c36f75a877a82c9"}
-            # {"status":"writing layer sha256:df30045fe90f0d750db82a058109cecd6d4de9c90a3d75b19c09e5f64580bb42"}
-            # {"status":"writing layer sha256:f18a68eb09bf925bb1b669490407c1b1251c5db98dc4d3d81f3088498ea55690"}
 
             yield CreateResponse(status="writing manifest")
             yield CreateResponse(status="success")
@@ -442,15 +443,17 @@ class ollamaLitApi:  # noqa: N801
         response.status_code = status.HTTP_400_BAD_REQUEST
         return response
 
-    async def tags(self, request: Request, response: Response, data: Any) -> TagsResponse:
+    async def tags(self, request: Request, response: Response) -> TagsResponse:
         models = []
         for path in Path("checkpoints").rglob("*"):
             if path.is_dir():
                 stats = path.stat()
                 modification_time = datetime.fromtimestamp(stats.st_mtime)
+                model_name = path.name
                 models.append(
                     TagModel(
-                        name=path.name,
+                        name=model_name,
+                        model=model_name,
                         modified_at=modification_time,
                         size=stats.st_size,
                         digest="",
@@ -460,19 +463,36 @@ class ollamaLitApi:  # noqa: N801
                             families=[],
                             parameter_size="",
                             quantization_level="",
+                            parent_model="",
                         ),
                     )
                 )
         return TagsResponse(models=models)
 
     async def show(self, request: Request, response: Response, data: ShowRequest) -> ShowResponse:
-        return ShowResponse(modelfile="", parameters="", template="", details={}, model_info={})
+        return ShowResponse(
+            modelfile="",
+            parameters="",
+            template="",
+            details={},
+            model_info={},
+            capabilities=["completion"],
+        )
 
     async def copy(self, request: Request, response: Response, data: CopyRequest) -> Response:
+        # Return 404 if source model not found
+        source_path = Path("checkpoints") / data.source
+        if not source_path.exists():
+            response.status_code = status.HTTP_404_NOT_FOUND
+            return response
         response.status_code = status.HTTP_200_OK
         return response
 
     async def delete(self, request: Request, response: Response, data: DeleteRequest) -> Response:
+        model_path = Path("checkpoints") / data.model
+        if not model_path.exists():
+            response.status_code = status.HTTP_404_NOT_FOUND
+            return response
         self.store.delete_model(data.model)
         response.status_code = status.HTTP_200_OK
         return response

@@ -19,6 +19,7 @@ class GenerateRequest:
     images: list[str] | None = None
     raw: bool | None = None
     keep_alive: bool | None = None  # make 0/1
+    think: bool | None = None
 
 
 @dataclass

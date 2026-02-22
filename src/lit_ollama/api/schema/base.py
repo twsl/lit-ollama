@@ -50,11 +50,13 @@ class ModelDetails:
     families: list[str]
     parameter_size: str
     quantization_level: str
+    parent_model: str = ""
 
 
 @dataclass
 class TagModel:
     name: str
+    model: str
     modified_at: str | datetime
     size: int
     digest: str

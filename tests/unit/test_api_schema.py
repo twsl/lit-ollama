@@ -22,8 +22,9 @@ def test_model_details() -> None:
 
 def test_tag_model() -> None:
     d = ModelDetails("gguf", "llama", ["llama"], "1B", "q4_0")
-    t = TagModel("foo", datetime.now(), 123, "digest", d)
+    t = TagModel("foo", "foo", datetime.now(), 123, "digest", d)
     assert t.name == "foo"
+    assert t.model == "foo"
 
 
 def test_chat_response_serialize() -> None:
@@ -54,8 +55,9 @@ def test_delete_request() -> None:
 
 
 def test_embed_response() -> None:
-    e = EmbedResponse("m", [[0.1, 0.2]], 1, 2, 3)
+    e = EmbedResponse("m", [[0.1, 0.2]])
     assert e.model == "m"
+    assert e.total_duration == 0
 
 
 def test_generate_response() -> None:
@@ -81,6 +83,7 @@ def test_push_response() -> None:
 def test_show_response() -> None:
     s = ShowResponse("modelfile", "params", "tmpl", {}, {})
     assert s.modelfile == "modelfile"
+    assert s.capabilities is None
 
 
 def test_tags_response() -> None:

@@ -15,6 +15,8 @@ class Message:
     content: str
     images: list[str] | None = None
     tool_calls: list[str] | None = None
+    thinking: str | None = None
+    tool_name: str | None = None
 
     def serialize(self):
         data = {
@@ -25,6 +27,10 @@ class Message:
             data["images"] = self.images
         if self.tool_calls is not None:
             data["tool_calls"] = self.tool_calls
+        if self.thinking is not None:
+            data["thinking"] = self.thinking
+        if self.tool_name is not None:
+            data["tool_name"] = self.tool_name
         return data
 
 
@@ -54,6 +60,7 @@ class ChatRequest:
     options: GenerateOptions | dict[str, Any] | None = None
     stream: bool | None = True
     keep_alive: str | None = "5m"
+    think: bool | None = None
 
 
 @dataclass
