@@ -12,7 +12,13 @@ authors = [
     { name = "twsl", email = "45483159+twsl@users.noreply.github.com" }
 ]
 keywords = [
-    "lit-ollama"
+    "lit-ollama",
+    "pytorch",
+    "lightning",
+    "pytorch-lightning",
+    "ollama",
+    "litserve",
+    "litgpt",
 ]
 classifiers = [
 ]
