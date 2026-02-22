@@ -38,6 +38,23 @@ uv add lit-ollama
 
 ## How to use it
 
+Run like any other `litserve` server:
+```python
+import litserve as ls
+
+from lit_ollama.server.api import LitOllamaAPI
+
+api = LitOllamaAPI("mock")
+server = ls.LitServer(
+    api,
+    accelerator="auto",
+    devices="auto",
+    callbacks=None,
+    middlewares=None,
+)
+server.run()
+```
+
 Start the server with a specific model:
 
 ```bash
