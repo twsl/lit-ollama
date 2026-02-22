@@ -1,6 +1,6 @@
 from typing import Any
 
-from pydantic import Field
+from pydantic import ConfigDict, Field
 from pydantic.dataclasses import dataclass
 
 from lit_ollama.api.schema.base import QuantizationType
@@ -9,7 +9,7 @@ from lit_ollama.api.schema.chat import Message
 # https://github.com/ollama/ollama/blob/main/docs/api.md#create-a-model
 
 
-@dataclass
+@dataclass(config=ConfigDict(populate_by_name=True))
 class CreateRequest:
     model: str
     from_: str | None = Field(default=None, alias="from")
@@ -22,6 +22,7 @@ class CreateRequest:
     messages: list[Message] | None = None
     stream: bool | None = None
     quantize: QuantizationType | str | None = None
+    modelfile: str | None = None  # raw Modelfile text (legacy / convenience)
 
 
 @dataclass

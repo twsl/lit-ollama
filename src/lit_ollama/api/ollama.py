@@ -399,6 +399,26 @@ class ollamaLitApi:  # noqa: N801
     async def create(
         self, request: Request, response: Response, data: CreateRequest, background_tasks: BackgroundTasks
     ) -> StreamingResponse:
+        # If a raw modelfile string was provided, parse it and fill in missing structured fields.
+        if data.modelfile and not data.from_:
+            from lit_ollama.models.file import ModelFile
+
+            mf = ModelFile.from_string(data.modelfile)
+            if mf.base and not data.from_:
+                data.from_ = mf.base
+            if mf.system and not data.system:
+                data.system = mf.system
+            if mf.template and not data.template:
+                data.template = mf.template
+            if mf.license and not data.license:
+                data.license = mf.license
+            if mf.parameters and not data.parameters:
+                data.parameters = mf.parameters
+            if mf.messages and not data.messages:
+                from lit_ollama.api.schema.chat import Message
+
+                data.messages = [Message(role=m["role"], content=m["content"]) for m in mf.messages]
+
         def create_stream(data: CreateRequest) -> Generator:
             if data.from_:
                 yield CreateResponse(status=f"reading model metadata from {data.from_}")
@@ -470,10 +490,24 @@ class ollamaLitApi:  # noqa: N801
         return TagsResponse(models=models)
 
     async def show(self, request: Request, response: Response, data: ShowRequest) -> ShowResponse:
+        from lit_ollama.models.file import ModelFile
+
+        mf = ModelFile()
+        mf.set_base(data.model)
+
+        # Build parameters string (one per line, matching ``ollama show`` output)
+        param_lines = []
+        for k, v in mf.parameters.items():
+            if isinstance(v, list):
+                for item in v:
+                    param_lines.append(f"{k}    {item}")
+            else:
+                param_lines.append(f"{k}    {v}")
+
         return ShowResponse(
-            modelfile="",
-            parameters="",
-            template="",
+            modelfile=mf.render(),
+            parameters="\n".join(param_lines),
+            template=mf.template or "",
             details={},
             model_info={},
             capabilities=["completion"],
